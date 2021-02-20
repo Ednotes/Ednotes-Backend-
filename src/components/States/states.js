@@ -16,6 +16,38 @@ import img1 from "../../images/Path 984.png";
 import StateComponent from "./StateComponent";
 
 export default function states() {
+  const allManagement = [
+    {
+      title: "Manage Courses",
+      href: "/courses",
+      icon: img1,
+    },
+
+    {
+      title: "Manage Course Outlines",
+      href: "/courses-outline",
+      icon: img1,
+    },
+
+    {
+      title: "Manage Universities",
+      href: "/courses",
+      icon: img1,
+    },
+
+    {
+      title: "Manage Faculties",
+      href: "/faculties",
+      icon: img1,
+    },
+
+    {
+      title: "Manage Departments",
+      href: "/courses",
+      icon: img1,
+    },
+  ];
+
   return (
     <Box mt={-100} ml={-14} w="65vw">
       <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
@@ -30,10 +62,16 @@ export default function states() {
 
       <Box mt={16}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-          <StateComponent href="/courses" imageIcon={img1} />
-          <StateComponent href="/courses" imageIcon={img1} />
-          <StateComponent href="/courses" imageIcon={img1} />
-          <StateComponent href="/courses" imageIcon={img1} />
+          {allManagement.map((manager, index) => {
+            return (
+              <StateComponent
+                key={index}
+                title={manager.title}
+                href={manager.href}
+                imageIcon={manager.icon}
+              />
+            );
+          })}
         </SimpleGrid>
       </Box>
     </Box>

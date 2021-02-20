@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 // chakra
 import { Flex, Center, Image, Text, Button, Box } from "@chakra-ui/react";
 
-const StateComponent = ({ imageIcon, href }) => {
+const StateComponent = ({ imageIcon, href, title }) => {
   return (
     <Flex
       bg="white"
       borderRadius="md"
-      px={16}
+      px={6}
       py={6}
       h="222px"
       justifyContent="center"
@@ -25,11 +25,11 @@ const StateComponent = ({ imageIcon, href }) => {
         </Center>
       </Box>
       <Text fontWeight="bold" p={3}>
-        Manage Courses
+        {title}
       </Text>
 
       <Link to={href}>
-        <Button colorScheme="primary" w="125px" h="36px" p={2}>
+        <Button colorScheme="brand" w="125px" h="36px" p={2}>
           View
         </Button>
       </Link>
