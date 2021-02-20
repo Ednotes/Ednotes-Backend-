@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Text,
-  Box,
-  Input,
-  Button,
-  Flex,
-  Center,
-  Image,
-  Link,
-  SimpleGrid,
-} from "@chakra-ui/react";
+import { Text, Box, Input, Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import img1 from "../../images/Path 984.png";
 
 // components
