@@ -7,6 +7,8 @@ import Courses from "./components/Courses/courses";
 import CoursesOutline from "./components/Courses/courses-outline";
 import Faculties from "./components/Faculties/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
+import NewCourse from "./components/Courses/newCourse";
+
 function App() {
   return (
     <Router>
@@ -31,11 +33,12 @@ function App() {
           <Box>
             <Switch>
               <Route exact path="/" component={States} />
-              <Route path="/manager" component={States} />
-              <Route path="/courses" component={Courses} />
-              <Route path="/courses-outline" component={CoursesOutline} />
-              <Route path="/faculties" component={Faculties} />
-              <Route path="/add-faculties" component={AddFaculties} />
+              <Route exact path="/manager" component={States} />
+              <Route exact path="/courses" component={Courses} />
+              <Route exact path="/courses/new" component={NewCourse} />
+              <Route exact path="/courses-outline" component={CoursesOutline} />
+              <Route exact path="/faculties" component={Faculties} />
+              <Route exact path="/add-faculties" component={AddFaculties} />
             </Switch>
           </Box>
         </Flex>

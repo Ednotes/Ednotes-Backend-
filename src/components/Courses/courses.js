@@ -8,14 +8,17 @@ import {
   Flex,
   SimpleGrid,
   Spacer,
-  Icon,
   InputGroup,
   Input,
   InputRightElement,
 } from "@chakra-ui/react";
 
+// react-router-dom
+import { Link } from "react-router-dom";
+
 // components
 import SingleCourse from "./SingleCourse";
+import { PlusIcon, FilterIcon } from "../UI/Svg/Icons";
 
 export default function courses() {
   return (
@@ -44,6 +47,22 @@ export default function courses() {
           <Spacer />
 
           <Box my="auto">
+            <Link to="/courses/new">
+              <Button
+                mx={2}
+                w="146.88px"
+                h={10}
+                borderRadius="5px"
+                fontSize="14px"
+              >
+                <PlusIcon width={24} height={24} />
+
+                <Text as="span" ml={2}>
+                  Add new
+                </Text>
+              </Button>
+            </Link>
+
             <Button
               mx={2}
               w="146.88px"
@@ -51,18 +70,11 @@ export default function courses() {
               borderRadius="5px"
               fontSize="14px"
             >
-              <Icon />
-              Add new
-            </Button>
-            <Button
-              mx={2}
-              w="146.88px"
-              h={10}
-              borderRadius="5px"
-              fontSize="14px"
-            >
-              <Icon />
-              Filters
+              <FilterIcon width={20} height={20} />
+
+              <Text as="span" ml={2}>
+                Filters
+              </Text>
             </Button>
           </Box>
         </Flex>
