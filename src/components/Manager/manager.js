@@ -5,7 +5,7 @@ import img1 from "../../images/Path 984.png";
 // components
 import StateComponent from "./ManagerComponent";
 
-export default function states() {
+export default function Manager() {
   const allManagement = [
     {
       title: "Manage Courses",
