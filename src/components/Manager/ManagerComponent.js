@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // chakra
 import { Flex, Center, Image, Text, Button, Box } from "@chakra-ui/react";
 
-const StateComponent = ({ imageIcon, href, title }) => {
+const ManagerComponent = ({ imageIcon, href, title }) => {
   return (
     <Flex
       bg="white"
@@ -37,4 +37,4 @@ const StateComponent = ({ imageIcon, href, title }) => {
   );
 };
 
-export default StateComponent;
+export default ManagerComponent;

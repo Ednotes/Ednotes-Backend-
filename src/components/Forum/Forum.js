@@ -13,9 +13,8 @@ import {
   import React from "react";
   import img1 from "../../images/Ellipse 274.png";
   import img2 from "../../images/Icon material-edit.png";
-  import img3 from "../../images/Icon awesome-check-circle.png";
   
-  export default function AllUsers() {
+  export default function Forum() {
     return (
       <Box mt={-100} ml={-14} w="65vw">
         <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>

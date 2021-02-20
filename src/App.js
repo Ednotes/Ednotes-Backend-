@@ -14,6 +14,8 @@ import NotFound from "./components/NotFound";
 import Requests from './components/Request/Request'
 import Subscriptions from "./components/Subscription/Subscription";
 import Forum from "./components/Forum/Forum"
+import Stats from './components/Stats/Stats'
+
 function App() {
   return (
     <Router>
@@ -48,6 +50,7 @@ function App() {
               <Route exact path="/subscriptions" component={Subscriptions} />
               <Route exact path="/requests" component={Requests} />
               <Route exact path="/forum" component={Forum} />
+              <Route exact path="/stats" component={Stats} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </Box>
