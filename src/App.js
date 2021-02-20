@@ -4,6 +4,8 @@ import { Box, Flex, Text, Image } from '@chakra-ui/react'
 import States from './components/States/states'
 import Sidebar from './components/Sidebar/Sidebar'
 import Courses from './components/Courses/courses'
+import Faculties from './components/Faculties/Faculties'
+import AddFaculties from './components/Faculties/AddFaculties'
 function App() {
   return (
     <Router>
@@ -22,6 +24,8 @@ function App() {
       <Switch>
      <Route path='/states' component={States}/>
      <Route path='/courses' component={Courses}/>
+     <Route path='/faculties' component={Faculties}/>
+     <Route path='/add-faculties' component={AddFaculties}/>
     </Switch>
       </Box>
       </Flex>
