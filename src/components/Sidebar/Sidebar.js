@@ -11,7 +11,7 @@ export default function Sidebar() {
         <Box p="10">
             <Text fontWeight="bold" mb={8}>LOGO</Text>
             <Flex bg="#F7B928"borderRadius="full" p={1} w="145px" h="35px">
-                <Image h={3} mx={2} my="auto" src={img1} /><Link to="/manager"><Text color="#fff">Manager</Text></Link>
+                <Image h={3} mx={2} my="auto" src={img1} /><Link to="/"><Text color="#fff">Manager</Text></Link>
             </Flex>
             <Flex my={5}>
                 <Image h={3} mx={2} my="auto" src={img2} /><Link to="/users"><Text>Users</Text></Link>

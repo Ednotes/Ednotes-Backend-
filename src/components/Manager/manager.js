@@ -3,7 +3,7 @@ import { Text, Box, Input, Button, Flex, SimpleGrid } from "@chakra-ui/react";
 import img1 from "../../images/Path 984.png";
 
 // components
-import StateComponent from "./StateComponent";
+import StateComponent from "./ManagerComponent";
 
 export default function states() {
   const allManagement = [
@@ -36,12 +36,27 @@ export default function states() {
       href: "/courses",
       icon: img1,
     },
+    {
+      title: "Manage States",
+      href: "/states",
+      icon: img1,
+    },
+    {
+      title: "Manage Past Papers",
+      href: "/papers",
+      icon: img1,
+    },
+    {
+      title: "Manage Forum",
+      href: "/forum",
+      icon: img1,
+    },
   ];
 
   return (
     <Box mt={-100} ml={-14} w="65vw">
       <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-        States
+        Manager
       </Text>
       <Flex>
         <Input h={8} w="15rem" />
