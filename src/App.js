@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 // import Navtop from './components/Navtop/Navtop';
-import States from "./components/States/states";
+import Manager from "./components/Manager/manager";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Courses from "./components/Courses/courses";
-import CoursesOutline from "./components/Courses/courses-outline";
+import CoursesOutline from "./components/CoursesOutline/courses-outline";
 import Faculties from "./components/Faculties/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
+import State from "./components/State/State"
 import NewCourse from "./components/Courses/newCourse";
 
 function App() {
@@ -32,13 +33,13 @@ function App() {
           </Box>
           <Box>
             <Switch>
-              <Route exact path="/" component={States} />
-              <Route exact path="/manager" component={States} />
+              <Route exact path="/" component={Manager} />
+              <Route path="/courses-outline" component={CoursesOutline} />
+              <Route path="/faculties" component={Faculties} />
+              <Route path="/add-faculties" component={AddFaculties} />
+              <Route path="/states" component={State} />
               <Route exact path="/courses" component={Courses} />
               <Route exact path="/courses/new" component={NewCourse} />
-              <Route exact path="/courses-outline" component={CoursesOutline} />
-              <Route exact path="/faculties" component={Faculties} />
-              <Route exact path="/add-faculties" component={AddFaculties} />
             </Switch>
           </Box>
         </Flex>
