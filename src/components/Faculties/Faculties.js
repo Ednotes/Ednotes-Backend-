@@ -1,4 +1,5 @@
-import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon } from '@chakra-ui/react'
+import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon} from '@chakra-ui/react'
+import {Link} from 'react-router-dom'
 import React from 'react'
 import img1 from '../../images/Icon material-edit.png'
 export default function Faculties() {
@@ -14,7 +15,11 @@ export default function Faculties() {
         </Button>
         <Spacer/>
         <Box>
-        <Button mx={2} w="146.88px" h={8} borderRadius="5px" fontSize="xs"><Icon/>Add new</Button>
+        <Link to='/add-faculty'>
+        <Button mx={2} w="146.88px" h={8} borderRadius="5px" fontSize="xs">
+        <Icon/>Add New
+        </Button>
+      </Link>
         <Button mx={2} w="146.88px" h={8} borderRadius="5px" fontSize="xs"><Icon/>Filters</Button>
         </Box>
       </Flex>

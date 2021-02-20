@@ -9,7 +9,11 @@ import Faculties from "./components/Faculties/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
 import State from "./components/State/State"
 import NewCourse from "./components/Courses/newCourse";
-
+import AllUsers from './components/Users/AllUsers'
+import NotFound from "./components/NotFound";
+import Requests from './components/Request/Request'
+import Subscriptions from "./components/Subscription/Subscription";
+import Forum from "./components/Forum/Forum"
 function App() {
   return (
     <Router>
@@ -34,12 +38,17 @@ function App() {
           <Box>
             <Switch>
               <Route exact path="/" component={Manager} />
-              <Route path="/courses-outline" component={CoursesOutline} />
-              <Route path="/faculties" component={Faculties} />
-              <Route path="/add-faculties" component={AddFaculties} />
-              <Route path="/states" component={State} />
+              <Route exact path="/courses-outline" component={CoursesOutline} />
+              <Route exact path="/faculties" component={Faculties} />
+              <Route exact path="/add-faculty" component={AddFaculties} />
+              <Route exact path="/states" component={State} />
               <Route exact path="/courses" component={Courses} />
               <Route exact path="/courses/new" component={NewCourse} />
+              <Route exact path="/users/all" component={AllUsers} />
+              <Route exact path="/subscriptions" component={Subscriptions} />
+              <Route exact path="/requests" component={Requests} />
+              <Route exact path="/forum" component={Forum} />
+              <Route exact path="*" component={NotFound} />
             </Switch>
           </Box>
         </Flex>
