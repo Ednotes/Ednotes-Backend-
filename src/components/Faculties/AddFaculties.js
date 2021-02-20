@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import img1 from "../../images/Icon material-edit.png";
-export default function Faculties() {
+export default function AddFaculties() {
   return (
     <Box mt={-100} ml={-14}>
       <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>

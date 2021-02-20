@@ -1,11 +1,11 @@
 import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon } from '@chakra-ui/react'
 import React from 'react'
 import img1 from '../../images/Icon material-edit.png'
-export default function Courses() {
+export default function CoursesOutline() {
     return (
         <Box mt={-100} ml={-14} w="65vw">
       <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-        Courses
+        Courses Outlines
       </Text>
       <Flex>
         <Input h={8} w="15rem" />
