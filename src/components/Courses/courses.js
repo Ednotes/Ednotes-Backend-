@@ -4,12 +4,14 @@ import React from "react";
 import {
   Text,
   Box,
-  Input,
   Button,
   Flex,
   SimpleGrid,
   Spacer,
   Icon,
+  InputGroup,
+  Input,
+  InputRightElement,
 } from "@chakra-ui/react";
 
 // components
@@ -23,17 +25,42 @@ export default function courses() {
           Courses
         </Text>
         <Flex>
-          <Input h={8} w="15rem" />
-          <Button h={8} ml={-15} borderRadius="0px 5px" fontSize="xs">
-            Search
-          </Button>
+          <InputGroup size="md" maxW="25rem" my="auto">
+            <Input
+              bg="#021A34"
+              pr="4.5rem"
+              type="text"
+              border={0}
+              color="white"
+              // placeholder="Enter password"
+            />
+            <InputRightElement width="6rem">
+              <Button borderRadius="0px 5px" fontWeight="regular">
+                Search
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+
           <Spacer />
-          <Box>
-            <Button mx={2} w="146.88px" h={8} borderRadius="5px" fontSize="xs">
+
+          <Box my="auto">
+            <Button
+              mx={2}
+              w="146.88px"
+              h={10}
+              borderRadius="5px"
+              fontSize="14px"
+            >
               <Icon />
               Add new
             </Button>
-            <Button mx={2} w="146.88px" h={8} borderRadius="5px" fontSize="xs">
+            <Button
+              mx={2}
+              w="146.88px"
+              h={10}
+              borderRadius="5px"
+              fontSize="14px"
+            >
               <Icon />
               Filters
             </Button>
