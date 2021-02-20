@@ -14,7 +14,7 @@ export default function Sidebar() {
                 <Image h={3} mx={2} my="auto" src={img1} /><Link to="/"><Text color="#fff">Manager</Text></Link>
             </Flex>
             <Flex my={5}>
-                <Image h={3} mx={2} my="auto" src={img2} /><Link to="/users"><Text>Users</Text></Link>
+                <Image h={3} mx={2} my="auto" src={img2} /><Link to="/users/all"><Text>Users</Text></Link>
             </Flex>
             <Flex my={5}>
                 <Image h={3} mx={2} my="auto" src={img3} /><Link to="/requests"><Text>Requests</Text></Link>
