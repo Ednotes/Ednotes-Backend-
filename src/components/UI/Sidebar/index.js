@@ -1,10 +1,5 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
-import img1 from "../../../images/Group 893.png";
-import img2 from "../../../images/bar-chart.png";
-import img3 from "../../../images/Icon awesome-tasks.png";
-import img4 from "../../../images/add-friend.png";
-import img5 from "../../../images/Icon ionic-md-settings.png";
 import SingleLink from "./SingleLink";
 import {
   HomeIcon,

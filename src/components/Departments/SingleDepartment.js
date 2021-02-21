@@ -5,7 +5,7 @@ import { Box, Text, Flex } from "@chakra-ui/react";
 
 const SingleDepartment = ({ faculty, state, university, title }) => {
   return (
-    <Box px={10} py={8} borderRadius="25px" borderRadius="md" bg="white">
+    <Box px={10} py={8} borderRadius="25px" bg="white">
       <Flex>
         <Text isTruncated mr={3} fontSize="16px" fontWeight="bold" my="auto">
           Department Name

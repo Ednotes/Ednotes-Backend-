@@ -5,7 +5,7 @@ import { Box, Text, Flex } from "@chakra-ui/react";
 
 const SingleUniversity = ({ title, state }) => {
   return (
-    <Box px={10} py={8} borderRadius="25px" borderRadius="md" bg="white">
+    <Box px={10} py={8} borderRadius="25px" bg="white">
       <Flex>
         <Text mr={3} fontSize="16px" fontWeight="bold" my="auto">
           {title}

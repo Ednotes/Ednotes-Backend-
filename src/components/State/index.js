@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import SingleState from "../../components/State/SingleState";
+import SingleState from "./SingleState";
 import CustomHeader from "../UI/CustomHeader";
 
 export default function State() {
