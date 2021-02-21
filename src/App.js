@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 // import Navtop from './components/Navtop/Navtop';
-import Manager from "./components/Manager/manager";
-import Courses from "./components/Courses/courses";
+import Manager from "./components/Manager";
+import Courses from "./components/Courses";
 import CoursesOutline from "./components/CoursesOutline";
 import Faculties from "./components/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
