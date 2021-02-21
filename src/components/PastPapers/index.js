@@ -1,44 +1,43 @@
-// chakra
 import { Box, SimpleGrid } from "@chakra-ui/react";
 
 // components
+import SinglePaper from "./SinglePaper";
 import CustomHeader from "../UI/CustomHeader";
-import SingleOutline from "./SingleOutline";
 
 export default function CoursesOutline() {
   return (
     <Box mt={-100} ml={-14} w="65vw">
-      <CustomHeader title="Courses Outline" />
+      <CustomHeader title="Past Papers" />
 
       <Box mt={16}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-          <SingleOutline
-            title="Discovery of Biological Systems"
+          <SinglePaper
+            title="Past papers name"
+            department="Fundamentals of wcjkqw qwdkjnqw qwdkjqw"
+            university="Science"
+            state="New York"
+          />
+          <SinglePaper
+            title="Past papers name"
             department="Fundamentals of..."
             university="Science"
             state="New York"
           />
-          <SingleOutline
-            title="Discovery of Biological Systems"
-            department="Fundamentals of..."
+          <SinglePaper
+            title="Past papers name"
+            department="Fundamentals of wcjkqw qwdkjnqw qwdkjqw"
             university="Science"
             state="New York"
           />
-          <SingleOutline
-            title="Discovery of Biological Systems"
-            department="Fundamentals of..."
+          <SinglePaper
+            title="Past papers name"
+            department="Fundamentals of wcjkqw qwdkjnqw qwdkjqw"
             university="Science"
             state="New York"
           />
-          <SingleOutline
-            title="Discovery of Biological Systems"
-            department="Fundamentals of..."
-            university="Science"
-            state="New York"
-          />
-          <SingleOutline
-            title="Discovery of Biological Systems"
-            department="Fundamentals of..."
+          <SinglePaper
+            title="Past papers name"
+            department="Fundamentals of wcjkqw qwdkjnqw qwdkjqw"
             university="Science"
             state="New York"
           />

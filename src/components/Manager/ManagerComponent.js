@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 
 // chakra
 import { Flex, Center, Image, Text, Button, Box } from "@chakra-ui/react";
+// import { ManageCoursesIcon } from "../UI/Svg/ManagerIcons";
 
-const ManagerComponent = ({ imageIcon, href, title }) => {
+const ManagerComponent = ({ icon, href, title, children }) => {
   return (
     <Flex
       bg="white"
@@ -19,11 +20,9 @@ const ManagerComponent = ({ imageIcon, href, title }) => {
       flexDir="column"
       textAlign="center"
     >
-      <Box bg="#E8EBF2" rounded="full" w={10} h={10}>
-        <Center h="40px" w="40px">
-          <Image src={imageIcon} alt="" h="15px" w="20px" />
-        </Center>
-      </Box>
+      <Center bg="#E8EBF2" rounded="full" w={10} h={10}>
+        <Image src={icon} />
+      </Center>
       <Text fontWeight="bold" p={3}>
         {title}
       </Text>

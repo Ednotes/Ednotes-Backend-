@@ -3,7 +3,7 @@ import React from "react";
 // chakra
 import { Box, Text, Flex } from "@chakra-ui/react";
 
-const SingleCourse = ({ outline, department, university, title }) => {
+const SingleUniversity = ({ title, state }) => {
   return (
     <Box px={10} py={8} borderRadius="25px" borderRadius="md" bg="white">
       <Flex>
@@ -26,29 +26,17 @@ const SingleCourse = ({ outline, department, university, title }) => {
           </svg>
         </Text>
       </Flex>
-      {/* other information */}w
+      {/* other information */}
       <Box mt={4}>
         <Text fontSize="14px">
           <Text as="span" fontWeight="medium">
-            Outline:
+            State:
           </Text>{" "}
-          {outline}
-        </Text>
-        <Text fontSize="14px">
-          <Text as="span" fontWeight="medium">
-            Department:
-          </Text>{" "}
-          {department}
-        </Text>
-        <Text fontSize="14px">
-          <Text as="span" fontWeight="medium">
-            University:
-          </Text>{" "}
-          {university}
+          {state}
         </Text>
       </Box>
     </Box>
   );
 };
 
-export default SingleCourse;
+export default SingleUniversity;

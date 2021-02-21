@@ -2,19 +2,22 @@ import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 // import Navtop from './components/Navtop/Navtop';
 import Manager from "./components/Manager/manager";
-import Sidebar from "./components/Sidebar/Sidebar";
 import Courses from "./components/Courses/courses";
 import CoursesOutline from "./components/CoursesOutline/courses-outline";
 import Faculties from "./components/Faculties/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
-import State from "./components/State/State"
+import State from "./components/State/State";
 import NewCourse from "./components/Courses/newCourse";
-import AllUsers from './components/Users/AllUsers'
+import AllUsers from "./components/Users/AllUsers";
 import NotFound from "./components/NotFound";
-import Requests from './components/Request/Request'
+import Requests from "./components/Request/Request";
 import Subscriptions from "./components/Subscription/Subscription";
-import Forum from "./components/Forum/Forum"
-import Stats from './components/Stats/Stats'
+import Forum from "./components/Forum/Forum";
+import Stats from "./components/Stats/Stats";
+import Sidebar from "./components/UI/Sidebar";
+import PastPapers from "./components/PastPapers";
+import Universities from "./components/Universities";
+import Departments from "./components/Departments";
 
 function App() {
   return (
@@ -51,6 +54,9 @@ function App() {
               <Route exact path="/requests" component={Requests} />
               <Route exact path="/forum" component={Forum} />
               <Route exact path="/stats" component={Stats} />
+              <Route exact path="/pastPapers" component={PastPapers} />
+              <Route exact path="/universities" component={Universities} />
+              <Route exact path="/departments" component={Departments} />
               <Route exact path="*" component={NotFound} />
             </Switch>
           </Box>

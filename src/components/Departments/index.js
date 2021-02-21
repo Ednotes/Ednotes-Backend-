@@ -17,17 +17,17 @@ import {
 import { Link } from "react-router-dom";
 
 // components
-import SingleCourse from "./SingleCourse";
+import SingleDepartment from "./SingleDepartment";
 import { PlusIcon, FilterIcon } from "../UI/Svg/Icons";
 
-export default function courses() {
+export default function Departments() {
   return (
     <>
       <Box mt={-100} ml={-14} w="65vw">
         {/* header */}
         <Box>
           <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-            Courses
+            Departments
           </Text>
           <Flex>
             <InputGroup size="md" maxW="25rem" my="auto">
@@ -84,33 +84,13 @@ export default function courses() {
 
         <Box mt={16}>
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-            <SingleCourse
-              title="a"
-              outline="aefa"
-              department="afa"
-              university="afafa"
-            />
+            <SingleDepartment faculty="aefa" state="afa" university="afafa" />
 
-            <SingleCourse
-              title="a"
-              outline="aefa"
-              department="afa"
-              university="afafa"
-            />
+            <SingleDepartment faculty="aefa" state="afa" university="afafa" />
 
-            <SingleCourse
-              title="a"
-              outline="aefa"
-              department="afa"
-              university="afafa"
-            />
+            <SingleDepartment faculty="aefa" state="afa" university="afafa" />
 
-            <SingleCourse
-              title="a"
-              outline="aefa"
-              department="afa"
-              university="afafa"
-            />
+            <SingleDepartment faculty="aefa" state="afa" university="afafa" />
           </SimpleGrid>
         </Box>
       </Box>
