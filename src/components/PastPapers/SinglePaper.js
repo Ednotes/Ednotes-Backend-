@@ -1,7 +1,7 @@
 import React from "react";
 
 // chakra
-import { Box, Text, Flex, Image, Spacer } from "@chakra-ui/react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 export default function SingleOutline({
   title,
   department,

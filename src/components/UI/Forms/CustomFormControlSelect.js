@@ -4,7 +4,6 @@ import React from "react";
 import {
   FormControl,
   FormLabel,
-  Input,
   FormHelperText,
   Select,
 } from "@chakra-ui/react";
@@ -13,7 +12,7 @@ const CustomFormControlSelect = ({
   helperText,
   id,
   label,
-  placeholder,
+  placeholder = "Select Option",
   onChange,
   options = [],
 }) => {
@@ -29,7 +28,6 @@ const CustomFormControlSelect = ({
         h="45px"
         placeholder={placeholder}
         onChange={onChange}
-        placeholder="Select option"
       >
         {options.map((opt, index) => {
           return (

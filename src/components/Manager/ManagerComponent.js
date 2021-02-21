@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // chakra
-import { Flex, Center, Image, Text, Button, Box } from "@chakra-ui/react";
+import { Flex, Center, Image, Text, Button } from "@chakra-ui/react";
 // import { ManageCoursesIcon } from "../UI/Svg/ManagerIcons";
 
 const ManagerComponent = ({ icon, href, title, children }) => {

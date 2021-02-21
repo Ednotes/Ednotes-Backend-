@@ -1,6 +1,6 @@
 import React from "react";
 import img1 from "../../images/Icon material-edit.png";
-import { Box, Text, Spacer, Image, Flex } from "@chakra-ui/react";
+import { Box, Text, Image, Flex } from "@chakra-ui/react";
 
 export default function SingleState({ state }) {
   return (
