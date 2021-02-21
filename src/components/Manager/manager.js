@@ -1,79 +1,102 @@
 import React from "react";
-import { Text, Box, Input, Button, Flex, SimpleGrid } from "@chakra-ui/react";
-import img1 from "../../images/Path 984.png";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 
 // components
-import StateComponent from "./ManagerComponent";
+import ManagerComponent from "./ManagerComponent";
+import CustomHeader from "../UI/CustomHeader";
 
 export default function Manager() {
   const allManagement = [
     {
       title: "Manage Courses",
       href: "/courses",
-      icon: img1,
+      icon: "",
     },
 
     {
       title: "Manage Course Outlines",
       href: "/courses-outline",
-      icon: img1,
+      icon: "",
     },
 
     {
       title: "Manage Universities",
-      href: "/courses",
-      icon: img1,
+      href: "/universities",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width={24}
+          height={24}
+          viewBox="0 0 32 30"
+        >
+          <defs>
+            <clipPath id="prefix__a">
+              <path
+                data-name="Rectangle 16894"
+                transform="translate(1510 372)"
+                fill="#003049"
+                stroke="#707070"
+                d="M0 0h32v30H0z"
+              />
+            </clipPath>
+          </defs>
+          <g
+            data-name="Mask Group 7"
+            transform="translate(-1510 -372)"
+            clipPath="url(#prefix__a)"
+          >
+            <path data-name="Path 987" d="M1511 372h30v30h-30z" fill="none" />
+            <path
+              data-name="Path 988"
+              d="M1526 375.75l-13.75 7.5 5 2.725v7.5l8.75 4.775 8.75-4.775v-7.5l2.5-1.363v8.638h2.5v-10zm8.525 7.5L1526 387.9l-8.525-4.65 8.525-4.65zm-2.275 8.737L1526 395.4l-6.25-3.413v-4.65l6.25 3.413 6.25-3.412v4.65z"
+              fill="#003049"
+            />
+          </g>
+        </svg>
+      ),
     },
 
     {
       title: "Manage Faculties",
       href: "/faculties",
-      icon: img1,
+      icon: "",
     },
 
     {
       title: "Manage Departments",
-      href: "/courses",
-      icon: img1,
+      href: "/departments",
+      icon: "",
     },
     {
       title: "Manage States",
       href: "/states",
-      icon: img1,
+      icon: "",
     },
     {
       title: "Manage Past Papers",
-      href: "/papers",
-      icon: img1,
+      href: "/pastPapers",
+      icon: "",
     },
     {
       title: "Manage Forum",
       href: "/forum",
-      icon: img1,
+      icon: "",
     },
   ];
 
   return (
     <Box mt={-100} ml={-14} w="65vw">
-      <Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-        Manager
-      </Text>
-      <Flex>
-        <Input h={8} w="15rem" />
-        <Button h={8} ml={-15} borderRadius="0px 5px" fontSize="xs">
-          Search
-        </Button>
-      </Flex>
+      <CustomHeader title="Manager" showButtons={false} />
 
       <Box mt={16}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
           {allManagement.map((manager, index) => {
             return (
-              <StateComponent
-                key={index}
+              <ManagerComponent
+                key={`0${index}`}
                 title={manager.title}
                 href={manager.href}
-                imageIcon={manager.icon}
+                icon={manager.icon}
               />
             );
           })}
