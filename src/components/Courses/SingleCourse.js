@@ -7,7 +7,7 @@ const SingleCourse = ({ outline, department, university, title }) => {
   return (
     <Box px={10} py={8} borderRadius="25px" borderRadius="md" bg="white">
       <Flex>
-        <Text isTruncated mr={3} fontSize="16px" fontWeight="bold" my="auto">
+        <Text mr={3} fontSize="16px" fontWeight="bold" my="auto">
           {title}
         </Text>
         <Text my="auto" ml="auto">
