@@ -4,6 +4,7 @@ import { Box, Flex, Text, Image } from "@chakra-ui/react";
 import Manager from "./components/Manager";
 import Courses from "./components/Courses";
 import CoursesOutline from "./components/CoursesOutline";
+import NewOutline from "./components/CoursesOutline/newOutline";
 import Faculties from "./components/Faculties";
 import AddFaculties from "./components/Faculties/AddFaculties";
 import State from "./components/State";
@@ -44,6 +45,7 @@ function App() {
             <Switch>
               <Route exact path="/" component={Manager} />
               <Route exact path="/courses-outline" component={CoursesOutline} />
+              <Route exact path="/courses-outline/new" component={NewOutline} />
               <Route exact path="/faculties" component={Faculties} />
               <Route exact path="/add-faculty" component={AddFaculties} />
               <Route exact path="/states" component={State} />
