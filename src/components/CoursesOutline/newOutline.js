@@ -6,18 +6,14 @@ import {
   Box,
   Button,
   Flex,
-  HStack,
   Spacer,
   InputGroup,
   Input,
-  Center,
   InputRightElement,
 } from "@chakra-ui/react";
 
 // components
-import CustomFormControl from "../UI/Forms/CustomFormControl";
 import CustomFormControlSelect from "../UI/Forms/CustomFormControlSelect";
-import { ImageIcon, DocumentIcon } from "../UI/Svg/Icons";
 
 export default function NewOutline() {
   return (
@@ -91,7 +87,6 @@ export default function NewOutline() {
             <Box w={{ md: "31%" }}>
               <CustomFormControlSelect label="State" />
             </Box>
-            =
           </Flex>
         </Box>
       </Box>
