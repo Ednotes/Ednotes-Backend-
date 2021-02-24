@@ -4,15 +4,12 @@ import {
     Button,
     Flex,
     SimpleGrid,
-    Center,
     Input,
     Image,
     Spacer,
     Icon,
   } from "@chakra-ui/react";
   import React from "react";
-  import img1 from "../../images/Ellipse 274.png";
-  import img2 from "../../images/Icon material-edit.png";
   import img3 from "../../images/Ellipse 274.png";
 
   
@@ -38,7 +35,7 @@ import {
         <Box mt={16}>
         <Box bg="#fff" px={8} py={4} h="60px" w="820px" borderRadius="10px">
               <Flex>
-                <Text fontSize="xs" my="auto" mx={1} fontSize="sm" fontWeight="bold">
+                <Text my="auto" mx={1} fontSize="sm" fontWeight="bold">
                   Total Number of Users: 2,501
                 </Text>
                 <Spacer />

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon } from '@chakra-ui/react'
+import { Box, Text, Flex, Image, Spacer} from '@chakra-ui/react'
 import img1 from "../../images/Icon material-edit.png"
 export default function SingleOutline({title, head_title, icon, department, university, state}) {
     return (

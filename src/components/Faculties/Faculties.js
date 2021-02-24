@@ -1,4 +1,4 @@
-import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon} from '@chakra-ui/react'
+import { Box, Text, Button, Flex, SimpleGrid, Input, Image, Spacer, Icon} from '@chakra-ui/react'
 import {Link} from 'react-router-dom'
 import React from 'react'
 import img1 from '../../images/Icon material-edit.png'

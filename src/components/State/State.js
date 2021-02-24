@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon } from '@chakra-ui/react'
+import { Box, Text, Button, Flex, SimpleGrid, Input, Spacer, Icon } from '@chakra-ui/react'
 import SingleState from '../../components/State/SingleState'
 export default function State() {
   return (

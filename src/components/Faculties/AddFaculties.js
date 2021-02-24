@@ -4,9 +4,7 @@ import {
   Button,
   Flex,
   SimpleGrid,
-  Center,
   Input,
-  Image,
   Spacer,
   Icon,
   FormLabel,
@@ -14,7 +12,6 @@ import {
   Select,
 } from "@chakra-ui/react";
 import React from "react";
-import img1 from "../../images/Icon material-edit.png";
 export default function AddFaculties() {
   return (
     <Box mt={-100} ml={-14}>

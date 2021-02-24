@@ -1,11 +1,11 @@
 import React from "react";
 
 // chakra
-import { Box, Text, Flex, VStack, HStack } from "@chakra-ui/react";
+import { Box, Text, Flex, HStack } from "@chakra-ui/react";
 
 const SingleCourse = ({ Icon, outline, department, university, title }) => {
   return (
-    <Box px={10} py={8} borderRadius="25px" borderRadius="md" bg="white">
+    <Box px={10} py={8} borderRadius="25px" bg="white">
       <Flex>
         <Text isTruncated mr={3} fontSize="18px" fontWeight="bold" my="auto">
           {title}

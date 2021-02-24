@@ -4,7 +4,6 @@ import {
   Button,
   Flex,
   SimpleGrid,
-  Center,
   Input,
   Image,
   Spacer,

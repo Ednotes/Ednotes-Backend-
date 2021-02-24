@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Box, Flex, Text, Image } from "@chakra-ui/react";
 // import Navtop from './components/Navtop/Navtop';
 import Manager from "./components/Manager/manager";

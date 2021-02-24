@@ -1,6 +1,5 @@
-import { Box, Text, Button, Flex, SimpleGrid, Center, Input, Image, Spacer, Icon } from '@chakra-ui/react'
+import { Box, Text, Button, Flex, SimpleGrid, Input, Spacer, Icon } from '@chakra-ui/react'
 import React from 'react'
-import img1 from '../../images/Icon material-edit.png'
 import SingleOutline from './SingleOutline'
 export default function CoursesOutline() {
     return (
