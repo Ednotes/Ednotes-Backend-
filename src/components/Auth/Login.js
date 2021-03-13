@@ -20,7 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState();
 
   // graphql
-  const [adminLogin, { loading, error, data }] = useMutation(LOGIN, {
+  const [adminLogin, { loading }] = useMutation(LOGIN, {
     onCompleted({ login }) {
       toast({
         description: "Logged in successfully",
