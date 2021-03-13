@@ -5,7 +5,6 @@ import {
   Box,
   Flex,
   Text,
-  Image,
   Menu,
   MenuButton,
   MenuList,

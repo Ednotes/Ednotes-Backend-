@@ -18,7 +18,7 @@ import PastPapers from "./components/PastPapers";
 import Universities from "./components/Universities";
 import Departments from "./components/Departments";
 import Login from "./components/Auth/Login";
-import { getToken, loggedIn } from "./helpers/localStorage";
+import { loggedIn } from "./helpers/localStorage";
 // import { SubscriptionsIcon } from "./components/UI/Svg/SidebarIcons";
 import Layout from "./components/UI/Layout";
 
