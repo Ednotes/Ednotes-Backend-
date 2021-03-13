@@ -4,13 +4,17 @@ import App from "./App";
 // import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from "@chakra-ui/react";
 import customTheme from "./chakra/theme";
+import { ApolloProvider } from "@apollo/client";
+import client from "./graphql";
 
 ReactDOM.render(
-  <ChakraProvider theme={customTheme}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ChakraProvider>,
+  <ApolloProvider client={client}>
+    <ChakraProvider theme={customTheme}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ChakraProvider>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 

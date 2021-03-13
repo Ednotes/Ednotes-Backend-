@@ -15,55 +15,123 @@ import Requests from "./components/Request";
 import Subscriptions from "./components/Subscription";
 import Forum from "./components/Forum";
 import Stats from "./components/Stats";
-import Sidebar from "./components/UI/Sidebar";
 import PastPapers from "./components/PastPapers";
 import Universities from "./components/Universities";
 import Departments from "./components/Departments";
+import Login from "./components/Auth/Login";
+import { getToken, loggedIn } from "./helpers/localStorage";
+// import { SubscriptionsIcon } from "./components/UI/Svg/SidebarIcons";
+import Layout from "./components/UI/Layout";
 
 function App() {
+  const loggedInRoutes = [
+    {
+      path: "/",
+      component: Manager,
+    },
+    {
+      path: "/courses-outline",
+      component: CoursesOutline,
+    },
+    {
+      path: "/courses-outline/new",
+      component: NewOutline,
+    },
+    {
+      path: "/faculties",
+      component: Faculties,
+    },
+    {
+      path: "/add-faculty",
+      component: AddFaculties,
+    },
+    {
+      path: "/states",
+      component: State,
+    },
+    {
+      path: "/courses",
+      component: Courses,
+    },
+    {
+      path: "/courses/new",
+      component: NewCourse,
+    },
+    {
+      path: "/users/all",
+      component: AllUsers,
+    },
+    {
+      path: "/subscriptions",
+      component: Subscriptions,
+    },
+    {
+      path: "/requests",
+      component: Requests,
+    },
+    {
+      path: "/users/all",
+      component: AllUsers,
+    },
+    {
+      path: "/forum",
+      component: Forum,
+    },
+
+    {
+      path: "/stats",
+      component: Stats,
+    },
+
+    {
+      path: "/pastPapers",
+      component: PastPapers,
+    },
+
+    {
+      path: "/universities",
+      component: Universities,
+    },
+
+    {
+      path: "/departments",
+      component: Departments,
+    },
+
+    {
+      path: "*",
+      component: NotFound,
+    },
+  ];
+
   return (
     <Router>
-      <Box>
-        <Box bg="#003049" h="10rem" color="#fff">
-          <Flex float="right" mt={8} mx={14}>
-            <Text color="#fff" mr={2}>
-              Asfandyer Butt
-            </Text>
-            <Image
-              rounded="full"
-              h="30px"
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-              alt="image"
-            />
-          </Flex>
-        </Box>
-        <Flex bg="#F8F8F8" minH="100vh">
-          <Box rounded="lg" mx={20} h="600px" w="280px" bg="#fff" mt={-100}>
-            <Sidebar />
-          </Box>
-          <Box>
-            <Switch>
-              <Route exact path="/" component={Manager} />
-              <Route exact path="/courses-outline" component={CoursesOutline} />
-              <Route exact path="/courses-outline/new" component={NewOutline} />
-              <Route exact path="/faculties" component={Faculties} />
-              <Route exact path="/add-faculty" component={AddFaculties} />
-              <Route exact path="/states" component={State} />
-              <Route exact path="/courses" component={Courses} />
-              <Route exact path="/courses/new" component={NewCourse} />
-              <Route exact path="/users/all" component={AllUsers} />
-              <Route exact path="/subscriptions" component={Subscriptions} />
-              <Route exact path="/requests" component={Requests} />
-              <Route exact path="/forum" component={Forum} />
-              <Route exact path="/stats" component={Stats} />
-              <Route exact path="/pastPapers" component={PastPapers} />
-              <Route exact path="/universities" component={Universities} />
-              <Route exact path="/departments" component={Departments} />
-              <Route exact path="*" component={NotFound} />
-            </Switch>
-          </Box>
-        </Flex>
-      </Box>
+      {loggedIn ? (
+        <Layout>
+          <Switch>
+            {loggedInRoutes.map((route, index) => {
+              return (
+                <Route
+                  key={index}
+                  exact
+                  path={route.path}
+                  component={route.component}
+                />
+              );
+            })}
+          </Switch>
+        </Layout>
+      ) : (
+        <Switch>
+          <Route exact path="/" component={Login}>
+            <Login />
+          </Route>
+
+          <Route exact path="/login" component={Login}>
+            <Login />
+          </Route>
+        </Switch>
+      )}
     </Router>
   );
 }
