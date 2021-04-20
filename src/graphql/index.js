@@ -5,8 +5,6 @@ import { onError } from "@apollo/client/link/error";
 import { createUploadLink } from "apollo-upload-client";
 import { getToken } from "../helpers/localStorage";
 
-// const token = JSON.parse(localStorage.getItem("REACT_TOKEN_AUTH_KEY"))
-
 const authLink = setContext((_, { headers }) => {
   return {
     headers: {
@@ -26,11 +24,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-// https://staging.urbanwash.ng/graphql
-
 let url = "https://ednotes.herokuapp.com/graphql";
 
 const uploadLink = createUploadLink({ uri: url });
+
+// combining auth, error and upload link
 const link = ApolloLink.from([errorLink, authLink, uploadLink]);
 
 const cache = new InMemoryCache();

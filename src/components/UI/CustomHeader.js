@@ -24,6 +24,7 @@ const CustomHeader = ({
   hrefNew,
   filterButtonOnClick,
   showButtons = true,
+  onAddNewButtonClick,
 }) => {
   return (
     <Box>
@@ -58,6 +59,7 @@ const CustomHeader = ({
                 h={10}
                 borderRadius="5px"
                 fontSize="14px"
+                onClick={onAddNewButtonClick}
               >
                 <PlusIcon width={24} height={24} />
 
