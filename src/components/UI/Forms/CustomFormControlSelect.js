@@ -12,7 +12,7 @@ const CustomFormControlSelect = ({
   helperText,
   id,
   label,
-  placeholder,
+  placeholder = "Select Option",
   onChange,
   options = [],
 }) => {
