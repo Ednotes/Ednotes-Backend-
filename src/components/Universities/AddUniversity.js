@@ -19,25 +19,22 @@ const AddUniversity = ({ modalDisclosure }) => {
   const [location, setLocation] = useState("");
 
   // GRAPHQL
-  const [addUniversityHandler, { loading, error, data }] = useMutation(
-    ADD_UNIVERSITY,
-    {
-      onCompleted() {
-        // show toast
-        toast({
-          description: "University Added Succesfully",
-          status: "success",
-          duration: 9000,
-          isClosable: true,
-          position: "top-right",
-        });
+  const [addUniversityHandler, { loading }] = useMutation(ADD_UNIVERSITY, {
+    onCompleted() {
+      // show toast
+      toast({
+        description: "University Added Succesfully",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top-right",
+      });
 
-        // close modal
-        modalDisclosure.onClose();
-      },
-      refetchQueries: [{ query: GET_UNIVERSITIES }],
-    }
-  );
+      // close modal
+      modalDisclosure.onClose();
+    },
+    refetchQueries: [{ query: GET_UNIVERSITIES }],
+  });
 
   return (
     <Box mb={6}>

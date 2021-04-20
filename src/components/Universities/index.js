@@ -6,12 +6,10 @@ import {
   Center,
   SimpleGrid,
   Spinner,
-  Button,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
@@ -31,7 +29,7 @@ export default function Universities() {
   const addUniversityDisclosure = useDisclosure();
 
   // Graphq;
-  const { data, loading, error, refetch } = useQuery(GET_UNIVERSITIES);
+  const { data, loading } = useQuery(GET_UNIVERSITIES);
   const allUniversities = data?.schools;
   return (
     <>
