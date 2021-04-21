@@ -12,12 +12,18 @@ import {
 	Select
 } from '@chakra-ui/react';
 import React from 'react';
+// graphql
+import { GET_UNIVERSITIES } from "../../graphql/queries/Manager/Universities";
+import { useQuery } from "@apollo/client";
 // import img1 from "../../images/Icon material-edit.png";
 export default function AddFaculties() {
+	// Graphq;
+	const { data } = useQuery(GET_UNIVERSITIES);
+	const allUniversities = data?.schools;
 	return (
 		<Box mt={-100} ml={-14}>
 			<Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-				Add A Faculties
+				Add A Faculty
 			</Text>
 			<Flex>
 				<Input h={8} w="15rem" />
@@ -51,10 +57,14 @@ export default function AddFaculties() {
 									h="56px"
 									borderRadius="10px"
 									type="text"
-								>
-									<option value="option1">Option 1</option>
-									<option value="option2">Option 2</option>
-									<option value="option3">Option 3</option>
+								>{
+									allUniversities?.map((opt)=>{
+										return(
+											<option value="option1">{opt.name}</option>
+										)
+										
+									})
+								}
 								</Select>
 							</Box>
 							<Box mx={8}>

@@ -1,206 +1,86 @@
-import { Box, Text, Flex, SimpleGrid, Image, Spacer } from "@chakra-ui/react";
-import img1 from "../../images/Icon material-edit.png";
+import { 
+      Box, 
+      SimpleGrid, 
+      Center, 
+      Spinner, 
+      Modal,
+      ModalOverlay,
+      ModalContent,
+      ModalHeader,
+      ModalBody,
+      ModalCloseButton,
+      useDisclosure,
+    } from "@chakra-ui/react";
+
 
 import CustomHeader from "../UI/CustomHeader";
+import SingleFaculty from './SingleFaculty'
+//GRAPHQL
+import {GET_FACULTIES} from '../../graphql/queries/Manager/Faculties'
+import {useQuery} from '@apollo/client'
+import AddFaculties from "./AddFaculties";
+
 
 export default function Faculties() {
+  // chakra modal
+  const addFacultyDisclosure = useDisclosure();
+
+  // Graphql;
+  const { data, loading } = useQuery(GET_FACULTIES);
+  const allFaculties = data?.faculties;
+
   return (
     <Box mt={-100} ml={-14} w="65vw">
-      <CustomHeader title="Faculties" />
+      <CustomHeader 
+      title="Faculties" 
+      onAddNewButtonClick={addFacultyDisclosure}
+      />
 
       <Box mt={16}>
+      {loading && (
+            <Center py={16}>
+              <Spinner />
+            </Center>
+          )}
+           {!loading && data && (
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
-          <Box bg="#fff" px={8} py={6} h="160px" borderRadius="10px">
-            <Box>
-              <Flex mb={3}>
-                <Text fontWeight="bold" mr={2} fontSize="16px">
-                  Faculty Name
-                </Text>
-                <Spacer />
-                <Image
-                  my="auto"
-                  ml="auto"
-                  src={img1}
-                  alt=""
-                  h="14px"
-                  w="14px"
-                />
-              </Flex>
-              <Text fontSize="14px">Department: University of NewYork</Text>
-              <Text fontSize="14px">University: Three</Text>
-              <Text fontSize="14px">State: NewYork</Text>
-            </Box>
-          </Box>
+          {allFaculties?.map((singleFacultyData)=>{
+            return(
+              <SingleFaculty
+              description={singleFacultyData?.description}
+              name={singleFacultyData?.name}
+              />
+            )
+           
+          })}
+          
         </SimpleGrid>
+           )}
       </Box>
+      <Modal
+        isOpen={addFacultyDisclosure.isOpen}
+        onClose={addFacultyDisclosure.onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <AddFaculties modalDisclosure={addFacultyDisclosure} />
+          </ModalBody>
+
+          {/* <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={addUniversityDisclosure.onClose}
+            >
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter> */}
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }
