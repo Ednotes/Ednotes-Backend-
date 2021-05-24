@@ -51,6 +51,8 @@ export default function Universities() {
               {allUniversities?.map((singleUniData) => {
                 return (
                   <SingleUniversity
+                    key={singleUniData?.id}
+                    id={singleUniData?.id}
                     title={singleUniData?.name}
                     state={singleUniData?.location}
                   />

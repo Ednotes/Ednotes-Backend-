@@ -11,8 +11,14 @@ import {
 
 export default function Sidebar() {
   const navLinks = [
+    // {
+    //   title: "Manager",
+    //   icon: <HomeIcon width={18} height={18} />,
+    //   href: "/",
+    // },
+
     {
-      title: "Manager",
+      title: "Universities",
       icon: <HomeIcon width={18} height={18} />,
       href: "/",
     },
