@@ -41,7 +41,7 @@ function App() {
       component: NewOutline,
     },
     {
-      path: "/faculties",
+      path: "/manager/:id/faculties",
       component: Faculties,
     },
     {

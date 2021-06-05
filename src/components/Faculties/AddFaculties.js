@@ -1,91 +1,100 @@
-import {
-	Box,
-	Text,
-	Button,
-	Flex,
-	SimpleGrid,
-	Input,
-	Spacer,
-	Icon,
-	FormLabel,
-	FormControl,
-	Select
-} from '@chakra-ui/react';
-import React from 'react';
-// graphql
-import { GET_UNIVERSITIES } from "../../graphql/queries/Manager/Universities";
-import { useQuery } from "@apollo/client";
-// import img1 from "../../images/Icon material-edit.png";
-export default function AddFaculties() {
-	// Graphq;
-	const { data } = useQuery(GET_UNIVERSITIES);
-	const allUniversities = data?.schools;
-	return (
-		<Box mt={-100} ml={-14}>
-			<Text color="#fff" fontWeight="bold" fontSize="xl" mb={2}>
-				Add A Faculty
-			</Text>
-			<Flex>
-				<Input h={8} w="15rem" />
-				<Button h={8} ml={-15} borderRadius="0px 5px" fontSize="xs">
-					Search
-				</Button>
-				<Spacer />
-				<Box>
-					<Button mr={14} w="146.88px" h={8} borderRadius="5px" fontSize="xs">
-						<Icon />
-						Save changes
-					</Button>
-				</Box>
-			</Flex>
-			<Box mt={16}>
-				<SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-					<Box>
-						<Flex>
-							<Box mx={8}>
-								<FormControl id="name">
-									<FormLabel fontWeight="semibold">Name</FormLabel>
-									<Input bg="#fff" w="236px" h="56px" borderRadius="10px" type="text" />
-								</FormControl>
-							</Box>
-							<Box mx={8}>
-								<FormLabel fontWeight="semibold">University</FormLabel>
-								<Select
-									placeholder="Select option"
-									bg="#fff"
-									w="236px"
-									h="56px"
-									borderRadius="10px"
-									type="text"
-								>{
-									allUniversities?.map((opt)=>{
-										return(
-											<option value="option1">{opt.name}</option>
-										)
-										
-									})
-								}
-								</Select>
-							</Box>
-							<Box mx={8}>
-								<FormLabel fontWeight="semibold">State</FormLabel>
-								<Select
-									placeholder="Select option"
-									bg="#fff"
-									w="236px"
-									h="56px"
-									borderRadius="10px"
-									type="text"
-								>
-									<option value="option1">Option 1</option>
-									<option value="option2">Option 2</option>
-									<option value="option3">Option 3</option>
-								</Select>
-							</Box>
-						</Flex>
-					</Box>
-				</SimpleGrid>
-			</Box>
-		</Box>
-	);
-}
+import React, { useState } from "react";
+
+// chakra
+import { Box, Button, useToast } from "@chakra-ui/react";
+import CustomFormControl from "../UI/Forms/CustomFormControl";
+
+// GraphqL
+import { useMutation } from "@apollo/client";
+import { ADD_FACULTY } from "../../graphql/Mutations/Manager/Faculties";
+import { GET_FACULTIES } from "../../graphql/queries/Manager/Faculties";
+
+const AddFaculty = ({ modalDisclosure, universityData }) => {
+  // chakra toast
+  const toast = useToast();
+
+  // state for input fields
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+
+  // GRAPHQL
+  const [addFacultyHandler, { loading }] = useMutation(ADD_FACULTY, {
+    onCompleted() {
+      // show toast
+      toast({
+        description: "Faculty Added Succesfully",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+        position: "top-right",
+      });
+
+      // close modal
+      modalDisclosure.onClose();
+    },
+    refetchQueries: [{ query: GET_FACULTIES }],
+  });
+
+  return (
+    <Box mb={6}>
+      <Box mb={8}>
+        <CustomFormControl
+          label="Faculty Name"
+          type="text"
+          placeholder="Science"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+      </Box>
+      <Box mb={8}>
+        <CustomFormControl
+          label="Description"
+          type="textarea"
+          placeholder="Tell us about this faculty"
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+        />
+      </Box>
+      {/* <Box mb={8}>
+        <CustomFormControl
+          label="Location"
+          type="text"
+          placeholder="Osun State, Nigeria"
+          onChange={(e) => {
+            setLocation(e.target.value);
+          }}
+        />
+      </Box> */}
+
+      <Button
+        onClick={() => {
+          const school = universityData?.id;
+
+          let input = {
+            name,
+            description,
+            school,
+          };
+
+          addFacultyHandler({
+            variables: {
+              inputValue: input,
+            },
+          });
+        }}
+        isLoading={loading}
+        isDisabled={!name || !description}
+        mt={10}
+        py={6}
+        w="100%"
+        colorScheme="brand"
+      >
+        Add Faculty
+      </Button>
+    </Box>
+  );
+};
+
+export default AddFaculty;

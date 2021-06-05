@@ -4,8 +4,11 @@ import { Box, SimpleGrid } from "@chakra-ui/react";
 // components
 import ManagerComponent from "./ManagerComponent";
 import CustomHeader from "../UI/CustomHeader";
+import { useParams } from "react-router";
 
 export default function Manager() {
+  const { id } = useParams();
+
   const allManagement = [
     {
       title: "Manage Courses",
@@ -58,7 +61,7 @@ export default function Manager() {
 
     {
       title: "Manage Faculties",
-      href: "/faculties",
+      href: `/manager/${id}/faculties`,
       icon: "",
     },
 

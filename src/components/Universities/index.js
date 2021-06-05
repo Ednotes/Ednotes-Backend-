@@ -69,7 +69,7 @@ export default function Universities() {
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Add University</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <AddUniversity modalDisclosure={addUniversityDisclosure} />
