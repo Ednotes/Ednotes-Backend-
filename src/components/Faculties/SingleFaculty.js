@@ -1,6 +1,6 @@
 import React from "react";
-import img1 from "../../images/Icon material-edit.png";
-import { Box, Text, Flex, Image, Spacer } from "@chakra-ui/react";
+// import img1 from "../../images/Icon material-edit.png";
+import { Box, Text, Flex, Spacer } from "@chakra-ui/react";
 
 const singleFaculty = ({ description, name, school }) => {
   return (
