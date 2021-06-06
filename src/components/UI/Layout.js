@@ -13,6 +13,8 @@ import {
 } from "@chakra-ui/react";
 
 import Sidebar from "./Sidebar";
+import { useQuery } from "@apollo/client";
+import { GET_USER } from "../../graphql/queries/User";
 
 const Layout = ({ children }) => {
   const logoutHandler = () => {
@@ -20,20 +22,25 @@ const Layout = ({ children }) => {
     window.location.href = "/";
   };
 
+  const { data } = useQuery(GET_USER);
+
+  const userData = data?.user;
+
   return (
     <Box>
       <Box bg="#003049" h="10rem" color="#fff">
         <Flex float="right" mt={8} mx={14}>
           <Text color="#fff" my="auto" mr={2}>
-            Asfandyer Butt
+            {`${userData?.firstName} ${userData?.lastName}`}
           </Text>
 
           <Menu>
             <MenuButton>
               <Avatar
                 my="auto"
+                name={`${userData?.firstName} ${userData?.lastName}`}
                 // h="30px"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+                // src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
               />
             </MenuButton>
             <MenuList>

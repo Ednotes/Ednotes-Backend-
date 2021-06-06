@@ -11,4 +11,15 @@ const GET_FACULTIES = gql`
   }
 `;
 
-export { GET_FACULTIES };
+const GET_FACULTY = gql`
+  query ($id: ID!) {
+    faculty(id: $id) {
+      id
+      school
+      name
+      description
+    }
+  }
+`;
+
+export { GET_FACULTIES, GET_FACULTY };
