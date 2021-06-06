@@ -36,7 +36,7 @@ const AddDepartment = ({ modalDisclosure, universityData }) => {
     refetchQueries: [{ query: GET_DEPARTMENTS }],
   });
 
-  const { id: universityId, facultyId } = useParams();
+  const { facultyId } = useParams();
 
   return (
     <Box mb={6}>
