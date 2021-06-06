@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Flex } from "@chakra-ui/react";
 import SingleLink from "./SingleLink";
 import {
   HomeIcon,
@@ -10,13 +10,11 @@ import {
 } from "../Svg/SidebarIcons";
 
 export default function Sidebar() {
+  const logoutHandler = () => {
+    localStorage.removeItem("ed-toke");
+    window.location.href = "/";
+  };
   const navLinks = [
-    // {
-    //   title: "Manager",
-    //   icon: <HomeIcon width={18} height={18} />,
-    //   href: "/",
-    // },
-
     {
       title: "Universities",
       icon: <HomeIcon width={18} height={18} />,
@@ -40,12 +38,6 @@ export default function Sidebar() {
       icon: <SubscriptionsIcon />,
       href: "/subscriptions",
     },
-
-    {
-      title: "Logout",
-      icon: <LogoutIcon />,
-      href: "/logout",
-    },
   ];
 
   return (
@@ -64,37 +56,21 @@ export default function Sidebar() {
           />
         );
       })}
-      {/* <Flex bg="#F7B928" borderRadius="full" p={1} w="145px" h="35px">
-        <Image h={3} mx={2} my="auto" src={img1} />
-        <Link as={NavLink} to="/">
-          <Text color="#fff">Manager</Text>
-        </Link>
+      <Flex
+        cursor="pointer"
+        mb={3}
+        borderRadius="full"
+        py={2}
+        px={3}
+        onClick={logoutHandler}
+      >
+        <Text mr={2} my="auto">
+          <LogoutIcon />
+        </Text>
+        <Text textDecor="none" fontSize="15px" my="auto">
+          Logout
+        </Text>
       </Flex>
-
-      <Flex my={5}>
-        <Image h={3} mx={2} my="auto" src={img2} />
-        <Link as={NavLink} to="/users/all">
-          <Text>Users</Text>
-        </Link>
-      </Flex>
-      <Flex my={5}>
-        <Image h={3} mx={2} my="auto" src={img3} />
-        <Link as={NavLink} to="/requests">
-          <Text>Requests</Text>
-        </Link>
-      </Flex>
-      <Flex my={5}>
-        <Image h={3} mx={2} my="auto" src={img4} />
-        <Link as={NavLink} to="/subscriptions">
-          <Text>Subscriptions</Text>
-        </Link>
-      </Flex>
-      <Flex my={5}>
-        <Image h={3} mx={2} my="auto" src={img5} />
-        <Link as={NavLink} to="/">
-          <Text>Logout</Text>
-        </Link>
-      </Flex> */}
     </Box>
   );
 }
