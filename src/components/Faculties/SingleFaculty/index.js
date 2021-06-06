@@ -18,19 +18,19 @@ const SingleFaculty = ({ description, name, school, id: facultyId }) => {
         h="160px"
         borderRadius="10px"
       >
-        <Box>
-          <Flex mb={3}>
-            <Text fontWeight="bold" mr={2} fontSize="16px">
-              {name}
-            </Text>
-            <Spacer />
-            {/* <Image my="auto" ml="auto" src={img1} alt="" h="14px" w="14px" /> */}
-          </Flex>
-          <Text fontSize="14px">{description}</Text>
-          {/* <Text fontSize="14px">Department: University of NewYork</Text> */}
-          {/* <Text fontSize="14px">University: {school}</Text> */}
-          {/* <Text fontSize="14px">State: NewYork</Text> */}
-        </Box>
+        <Flex mb={3}>
+          <Text fontWeight="bold" mr={2} fontSize="16px">
+            {name}
+          </Text>
+          <Spacer />
+          {/* <Image my="auto" ml="auto" src={img1} alt="" h="14px" w="14px" /> */}
+        </Flex>
+        <Text fontSize="14px">{description}</Text>
+        <Text mt="auto" fontSize="10px" color="primary.500" fontWeight="bold">
+          View Departments
+        </Text>
+        {/* <Text fontSize="14px">University: {school}</Text> */}
+        {/* <Text fontSize="14px">State: NewYork</Text> */}
       </Flex>
     </Link>
   );

@@ -29,13 +29,14 @@ import SingleDepartment from "./SingleDepartment";
 import CustomHeader from "../../../../components/UI/CustomHeader";
 import { Empty, Loader } from "../../../../components/UI/Fetching";
 import AddDepartment from "./AddDepartment";
+import { GET_FACULTY } from "../../../../graphql/queries/Manager/Faculties";
 
 export default function Departments() {
   // chakra modal
   const addDepartmentDisclosure = useDisclosure();
 
   // university id
-  const { id } = useParams();
+  const { id, facultyId } = useParams();
 
   // Graphql
   const { data, loading } = useQuery(GET_DEPARTMENTS);
@@ -49,8 +50,17 @@ export default function Departments() {
       },
     }
   );
+
+  // get faculty data
+  const { data: facultyData } = useQuery(GET_FACULTY, {
+    variables: {
+      id: facultyId,
+    },
+  });
+
   const allDepartments = data?.depts;
   const schoolData = universityData?.school;
+  const faculty = facultyData?.faculty;
 
   let filteredDepartments = [];
   // here we're filtering out the faculties that belong to this school
@@ -76,17 +86,15 @@ export default function Departments() {
             <Flex flexDir="column" w="100%">
               <Center flexDir="column" bg="gray.200" py={5} mb={5}>
                 <Text fontWeight="bold">{schoolData?.name}</Text>
-                <Text fontSize="sm">{schoolData?.description}</Text>
+                <Text fontSize="sm">{faculty?.name}</Text>
               </Center>
 
               <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-                {filteredDepartments?.map((singleFacultyData) => {
+                {filteredDepartments?.map((singleDepartmentData) => {
                   return (
                     <SingleDepartment
-                      faculty="aefa"
-                      state="afa"
-                      university="afafa"
-                      title=""
+                      title={singleDepartmentData?.name}
+                      description={singleDepartmentData?.description}
                     />
                   );
                 })}

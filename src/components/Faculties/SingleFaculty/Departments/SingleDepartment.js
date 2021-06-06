@@ -3,14 +3,14 @@ import React from "react";
 // chakra
 import { Box, Text, Flex } from "@chakra-ui/react";
 
-const SingleDepartment = ({ faculty, state, university, title }) => {
+const SingleDepartment = ({ title, description }) => {
   return (
     <Box px={10} py={8} borderRadius="25px" bg="white">
       <Flex>
         <Text isTruncated mr={3} fontSize="16px" fontWeight="bold" my="auto">
-          Department Name
+          {title}
         </Text>
-        <Text my="auto" ml="auto">
+        {/* <Text my="auto" ml="auto">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -24,17 +24,16 @@ const SingleDepartment = ({ faculty, state, university, title }) => {
               transform="translate(-4.5 -4.496)"
             />
           </svg>
-        </Text>
+        </Text> */}
       </Flex>
       {/* other information */}
       <Box mt={4}>
         <Text fontSize="14px">
           <Text as="span" fontWeight="medium">
-            University:
-          </Text>{" "}
-          {university}
+            {description}
+          </Text>
         </Text>
-        <Text fontSize="14px">
+        {/* <Text fontSize="14px">
           <Text as="span" fontWeight="medium">
             faculty:
           </Text>{" "}
@@ -45,7 +44,7 @@ const SingleDepartment = ({ faculty, state, university, title }) => {
             State:
           </Text>{" "}
           {state}
-        </Text>
+        </Text> */}
       </Box>
     </Box>
   );
