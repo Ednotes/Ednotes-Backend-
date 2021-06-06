@@ -1,6 +1,6 @@
 import React from "react";
 // import img1 from "../../images/Icon material-edit.png";
-import { Box, Text, Flex, Spacer } from "@chakra-ui/react";
+import { Text, Flex, Spacer } from "@chakra-ui/react";
 import { Link, useParams } from "react-router-dom";
 
 const SingleFaculty = ({ description, name, school, id: facultyId }) => {
