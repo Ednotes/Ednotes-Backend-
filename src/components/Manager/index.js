@@ -65,11 +65,11 @@ export default function Manager() {
       icon: "",
     },
 
-    {
-      title: "Manage Departments",
-      href: "/departments",
-      icon: "",
-    },
+    // {
+    //   title: "Manage Departments",
+    //   href: `/manager/${id}/departments`,
+    //   icon: "",
+    // },
     {
       title: "Manage States",
       href: "/states",
