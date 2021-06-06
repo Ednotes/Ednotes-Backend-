@@ -16,7 +16,7 @@ import Forum from "./components/Forum";
 import Stats from "./components/Stats";
 import PastPapers from "./components/PastPapers";
 import Universities from "./components/Universities";
-import Departments from "./components/Departments";
+import Departments from "./components/Faculties/SingleFaculty/Departments";
 import Login from "./components/Auth/Login";
 import { loggedIn } from "./helpers/localStorage";
 // import { SubscriptionsIcon } from "./components/UI/Svg/SidebarIcons";
@@ -47,6 +47,11 @@ function App() {
     {
       path: "/add-faculty",
       component: AddFaculties,
+    },
+
+    {
+      path: "/manager/:id/faculties/:facultyId/departments",
+      component: Departments,
     },
     {
       path: "/states",
@@ -94,11 +99,6 @@ function App() {
     {
       path: "/universities",
       component: Universities,
-    },
-
-    {
-      path: "/departments",
-      component: Departments,
     },
 
     {

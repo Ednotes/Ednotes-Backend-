@@ -30,8 +30,11 @@ export default function Faculties() {
   // university id
   const { id } = useParams();
 
-  // Graphql;
+  // Graphql
+  // get faculty data
   const { data, loading } = useQuery(GET_FACULTIES);
+
+  // get university data
   const { data: universityData, loading: unviersityLoading } = useQuery(
     GET_UNIVERSITY,
     {
@@ -76,6 +79,8 @@ export default function Faculties() {
               {filteredFaculties?.map((singleFacultyData) => {
                 return (
                   <SingleFaculty
+                    key={singleFacultyData?.id}
+                    id={singleFacultyData?.id}
                     description={singleFacultyData?.description}
                     name={singleFacultyData?.name}
                     school={singleFacultyData?.school}
