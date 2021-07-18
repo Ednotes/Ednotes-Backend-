@@ -1,9 +1,9 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const GET_UNIVERSITIES = gql`
   query {
     schools {
-      id
+      _id
       name
       description
       location
@@ -14,7 +14,7 @@ const GET_UNIVERSITIES = gql`
 const GET_UNIVERSITY = gql`
   query ($id: ID!) {
     school(id: $id) {
-      id
+      _id
       name
       description
       location

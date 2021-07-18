@@ -1,9 +1,9 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const GET_FACULTIES = gql`
   query {
     faculties {
-      id
+      _id
       school
       name
       description
@@ -14,7 +14,7 @@ const GET_FACULTIES = gql`
 const GET_FACULTY = gql`
   query ($id: ID!) {
     faculty(id: $id) {
-      id
+      _id
       school
       name
       description

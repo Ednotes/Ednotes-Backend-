@@ -1,9 +1,9 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const GET_DEPARTMENTS = gql`
   query {
     depts {
-      id
+      _id
       school
       faculty
       name

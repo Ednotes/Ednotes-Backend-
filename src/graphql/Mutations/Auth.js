@@ -1,9 +1,17 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const LOGIN = gql`
-  mutation($input: loginInput) {
+  mutation ($input: loginInput!) {
     login(input: $input) {
-      token
+      message
+      value
+      user {
+        _id
+        firstName
+        lastName
+        username
+        email
+      }
     }
   }
 `;

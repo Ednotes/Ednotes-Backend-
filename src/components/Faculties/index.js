@@ -12,16 +12,16 @@ import {
   useDisclosure,
   Text,
   Flex,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import CustomHeader from "../UI/CustomHeader";
-import SingleFaculty from "./SingleFaculty";
+import CustomHeader from '../UI/CustomHeader';
+import SingleFaculty from './SingleFaculty';
 //GRAPHQL
-import { GET_FACULTIES } from "../../graphql/queries/Manager/Faculties";
-import { GET_UNIVERSITY } from "../../graphql/queries/Manager/Universities";
-import { useQuery } from "@apollo/client";
-import AddFaculties from "./AddFaculties";
-import { useParams } from "react-router";
+import { GET_FACULTIES } from '../../graphql/queries/Manager/Faculties';
+import { GET_UNIVERSITY } from '../../graphql/queries/Manager/Universities';
+import { useQuery } from '@apollo/client';
+import AddFaculties from './AddFaculties';
+import { useParams } from 'react-router';
 
 export default function Faculties() {
   // chakra modal
@@ -56,9 +56,9 @@ export default function Faculties() {
   }
 
   return (
-    <Box mt={-100} ml={-14} w="65vw">
+    <Box mt={-100} ml={-14} w='65vw'>
       <CustomHeader
-        title="Faculties"
+        title='Faculties'
         onAddNewButtonClick={addFacultyDisclosure.onOpen}
       />
 
@@ -69,18 +69,18 @@ export default function Faculties() {
           </Center>
         )}
         {!loading && !unviersityLoading && data && universityData && (
-          <Flex flexDir="column" w="100%">
-            <Center flexDir="column" bg="gray.200" py={5} mb={5}>
-              <Text fontWeight="bold">{schoolData?.name}</Text>
-              <Text fontSize="sm">{schoolData?.description}</Text>
+          <Flex flexDir='column' w='100%'>
+            <Center flexDir='column' bg='gray.200' py={5} mb={5}>
+              <Text fontWeight='bold'>{schoolData?.name}</Text>
+              <Text fontSize='sm'>{schoolData?.description}</Text>
             </Center>
 
             <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
               {filteredFaculties?.map((singleFacultyData) => {
                 return (
                   <SingleFaculty
-                    key={singleFacultyData?.id}
-                    id={singleFacultyData?.id}
+                    key={singleFacultyData?._id}
+                    id={singleFacultyData?._id}
                     description={singleFacultyData?.description}
                     name={singleFacultyData?.name}
                     school={singleFacultyData?.school}
@@ -91,11 +91,11 @@ export default function Faculties() {
 
             {filteredFaculties?.length === 0 && (
               <Center
-                fontSize="14px"
+                fontSize='14px'
                 p={6}
-                bg="white"
-                w="100%"
-                textAlign="center"
+                bg='white'
+                w='100%'
+                textAlign='center'
               >
                 No Faculties have been added
               </Center>

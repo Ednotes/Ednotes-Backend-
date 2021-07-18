@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { Box, Flex, Text, Button, useToast } from "@chakra-ui/react";
+import { Box, Flex, Text, Button, useToast } from '@chakra-ui/react';
 
 // GRAPHQL
-import { useMutation } from "@apollo/client";
-import { LOGIN } from "../../graphql/Mutations/Auth";
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../graphql/Mutations/Auth';
 
 // helpers
-import { setToken } from "../../helpers/localStorage";
+import { setToken } from '../../helpers/localStorage';
 
 // components
-import CustomFormControl from "../UI/Forms/CustomFormControl";
+import CustomFormControl from '../UI/Forms/CustomFormControl';
 const Login = () => {
   // toast
   const toast = useToast();
@@ -23,16 +23,22 @@ const Login = () => {
   const [adminLogin, { loading }] = useMutation(LOGIN, {
     onCompleted({ login }) {
       toast({
-        description: "Logged in successfully",
-        status: "success",
+        description: 'Logged in successfully',
+        status: 'success',
         duration: 9000,
         isClosable: true,
       });
 
-      const { token } = login;
+      const { message } = login;
 
-      setToken(token);
-      window.location.href = "/";
+      setToken(message);
+      window.location.href = '/';
+
+      toast({
+        description: message,
+        duration: 9000,
+        isClosable: true,
+      });
     },
   });
 
@@ -49,27 +55,21 @@ const Login = () => {
         },
       });
     } catch (error) {
-      const { message } = error;
-      toast({
-        description: message,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
+      return null;
     }
   };
 
   return (
-    <Flex flexDir="column" w="100%" h="100vh" overflowY="auto">
-      <Box flexDir="column" m="auto">
-        <Text mb={6} fontSize="3xl" fontWeight={900}>
+    <Flex flexDir='column' w='100%' h='100vh' overflowY='auto'>
+      <Box flexDir='column' m='auto'>
+        <Text mb={6} fontSize='3xl' fontWeight={900}>
           Login
         </Text>
 
         <CustomFormControl
-          label="Email"
-          type="email"
-          placeholder="damil@email.com"
+          label='Email'
+          type='email'
+          placeholder='damil@email.com'
           onChange={(e) => {
             setEmail(e.target.value);
           }}
@@ -77,9 +77,9 @@ const Login = () => {
 
         <Box mt={8}>
           <CustomFormControl
-            label="Password"
-            type="password"
-            placeholder="******"
+            label='Password'
+            type='password'
+            placeholder='******'
             onChange={(e) => {
               setPassword(e.target.value);
             }}
@@ -92,8 +92,8 @@ const Login = () => {
           isDisabled={!email || !password}
           mt={10}
           py={6}
-          w="100%"
-          colorScheme="brand"
+          w='100%'
+          colorScheme='brand'
         >
           Login
         </Button>
