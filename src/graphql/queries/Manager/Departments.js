@@ -1,13 +1,25 @@
 import { gql } from '@apollo/client';
 
 const GET_DEPARTMENTS = gql`
-  query {
-    depts {
+  query ($id: ID!) {
+    school(id: $id) {
       _id
-      school
-      faculty
       name
       description
+      faculties {
+        _id
+        name
+        description
+      }
+      departments {
+        _id
+        name
+        description
+        faculty {
+          name
+          description
+        }
+      }
     }
   }
 `;

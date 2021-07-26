@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 // chakra
 import { Box, Button, useToast } from '@chakra-ui/react';
-import CustomFormControl from '../../../../components/UI/Forms/CustomFormControl';
+import CustomFormControl from '../../components/UI/Forms/CustomFormControl';
 
 // GraphqL
 import { useMutation } from '@apollo/client';
-import { ADD_DEPARTMENT } from '../../../../graphql/Mutations/Manager/Departments';
-import { GET_DEPARTMENTS } from '../../../../graphql/queries/Manager/Departments';
-import { useParams } from 'react-router';
+import { ADD_DEPARTMENT } from '../../graphql/Mutations/Manager/Departments';
+import { GET_DEPARTMENTS } from '../../graphql/queries/Manager/Departments';
+// import { useParams } from 'react-router';
+import SearchableSelect from '../UI/Forms/SearchableSelect';
 
 const AddDepartment = ({ modalDisclosure, universityData }) => {
   // chakra toast
@@ -17,6 +18,7 @@ const AddDepartment = ({ modalDisclosure, universityData }) => {
   // state for input fields
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [facultyId, setFacultyId] = useState();
 
   // GRAPHQL
   const [addDepartmentHandler, { loading }] = useMutation(ADD_DEPARTMENT, {
@@ -33,16 +35,24 @@ const AddDepartment = ({ modalDisclosure, universityData }) => {
       // close modal
       modalDisclosure.onClose();
     },
-    refetchQueries: [{ query: GET_DEPARTMENTS }],
+    refetchQueries: [
+      { query: GET_DEPARTMENTS, variables: { id: universityData._id } },
+    ],
   });
 
-  const { facultyId } = useParams();
+  const filteredFaculties = [];
+  universityData.faculties.forEach((fd) => {
+    filteredFaculties.push({
+      label: fd.name,
+      value: fd._id,
+    });
+  });
 
   return (
     <Box mb={6}>
       <Box mb={8}>
         <CustomFormControl
-          label='Faculty Name'
+          label='Department Name'
           type='text'
           placeholder='Science'
           onChange={(e) => {
@@ -61,16 +71,25 @@ const AddDepartment = ({ modalDisclosure, universityData }) => {
         />
       </Box>
 
+      <Box>
+        <SearchableSelect
+          label='Faculty'
+          options={filteredFaculties}
+          onChange={(e) => {
+            setFacultyId(e.value);
+          }}
+        />
+      </Box>
+
       <Button
         onClick={() => {
           const school = universityData?._id;
-          const faculty = facultyId;
 
           let input = {
             name,
             description,
             school,
-            faculty,
+            faculty: facultyId,
           };
 
           addDepartmentHandler({

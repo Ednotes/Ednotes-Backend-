@@ -2,118 +2,111 @@ import React from 'react';
 
 // chakra
 import {
-  Text,
   Box,
-  Button,
-  Flex,
   SimpleGrid,
-  Spacer,
-  InputGroup,
-  Input,
-  InputRightElement,
+  Flex,
+  Center,
+  Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from '@chakra-ui/react';
 
-// react-router-dom
-import { Link } from 'react-router-dom';
+// graphql
+import { useQuery } from '@apollo/client';
+import { GET_COURSES, GET_SCHOOL } from '../../graphql/queries/Manager/Courses';
 
 // components
 import SingleCourse from './SingleCourse';
-import { PlusIcon, FilterIcon } from '../UI/Svg/Icons';
+import CustomHeader from '../UI/CustomHeader';
+import NewCourse from './NewCourse';
+import { useParams } from 'react-router';
+import Back from '../UI/Back';
+import { Empty, Loader } from '../UI/Fetching';
 
-export default function courses() {
+export default function Courses() {
+  // chakra modal
+  const addCourseDisclosure = useDisclosure();
+
+  // university id
+  const { id } = useParams();
+
+  // Graphql
+  const { data: sData, loading: schoolLoading } = useQuery(GET_SCHOOL, {
+    variables: {
+      id,
+    },
+  });
+  const { data, loading } = useQuery(GET_COURSES);
+
+  const schoolData = sData?.school;
+  const allCourses = data?.get_all_courses?.edges;
+
   return (
     <>
       <Box mt={-100} ml={-14} w='65vw'>
         {/* header */}
-        <Box>
-          <Text color='#fff' fontWeight='bold' fontSize='xl' mb={2}>
-            Courses
-          </Text>
-          <Flex>
-            <InputGroup size='md' maxW='25rem' my='auto'>
-              <Input
-                bg='#021A34'
-                pr='4.5rem'
-                type='text'
-                border={0}
-                color='white'
-                // placeholder="Enter password"
-              />
-              <InputRightElement width='5.5rem'>
-                <Button borderRadius='0px 5px' fontWeight='regular'>
-                  Search
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-
-            <Spacer />
-
-            <Box my='auto'>
-              <Link to='/courses/new'>
-                <Button
-                  mx={2}
-                  w='146.88px'
-                  h={10}
-                  borderRadius='5px'
-                  fontSize='14px'
-                >
-                  <PlusIcon width={24} height={24} />
-
-                  <Text as='span' ml={2}>
-                    Add new
-                  </Text>
-                </Button>
-              </Link>
-
-              <Button
-                mx={2}
-                w='146.88px'
-                h={10}
-                borderRadius='5px'
-                fontSize='14px'
-              >
-                <FilterIcon width={20} height={20} />
-
-                <Text as='span' ml={2}>
-                  Filters
-                </Text>
-              </Button>
-            </Box>
-          </Flex>
-        </Box>
+        <CustomHeader
+          title='Courses'
+          onAddNewButtonClick={addCourseDisclosure.onOpen}
+        />
 
         <Box mt={16}>
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-            <SingleCourse
-              title='a'
-              outline='aefa'
-              department='afa'
-              university='afafa'
-            />
+          <Back />
+          {loading && schoolLoading && <Loader />}
 
-            <SingleCourse
-              title='a'
-              outline='aefa'
-              department='afa'
-              university='afafa'
-            />
+          {!loading && !loading && data && (
+            <Flex flexDir='column' w='100%'>
+              <Center flexDir='column' bg='gray.200' py={5} mb={5}>
+                <Text fontWeight='bold'>{schoolData?.name}</Text>
+              </Center>
 
-            <SingleCourse
-              title='a'
-              outline='aefa'
-              department='afa'
-              university='afafa'
-            />
+              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
+                {allCourses?.map((singleCourseData) => {
+                  console.log(singleCourseData);
+                  return (
+                    <SingleCourse
+                      key={singleCourseData?._id}
+                      title={singleCourseData?.name}
+                      description={singleCourseData?.description}
+                    />
+                  );
+                })}
+              </SimpleGrid>
 
-            <SingleCourse
-              title='a'
-              outline='aefa'
-              department='afa'
-              university='afafa'
-            />
-          </SimpleGrid>
+              {allCourses?.length === 0 && (
+                <Empty text='No Courses have been added' />
+              )}
+            </Flex>
+          )}
         </Box>
       </Box>
+
+      <Modal
+        size='xl'
+        isOpen={addCourseDisclosure.isOpen}
+        onClose={addCourseDisclosure.onClose}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Add Course</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {/* <AddDepartment
+              universityData={schoolData}
+              modalDisclosure={addCourseDisclosure}
+            /> */}
+            <NewCourse
+              universityData={schoolData}
+              modalDisclosure={addCourseDisclosure}
+            />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
