@@ -16,6 +16,7 @@ const CustomFormControl = ({
   label,
   placeholder,
   onChange,
+  value,
 }) => {
   return (
     <FormControl id={id}>
@@ -29,6 +30,7 @@ const CustomFormControl = ({
           borderRadius='13px'
           placeholder={placeholder}
           onChange={onChange}
+          value={value}
         />
       ) : (
         <Input
@@ -38,6 +40,7 @@ const CustomFormControl = ({
           placeholder={placeholder}
           type={type}
           onChange={onChange}
+          value={value}
         />
       )}
 

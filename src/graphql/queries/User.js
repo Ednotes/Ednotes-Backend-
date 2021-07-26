@@ -11,4 +11,18 @@ const GET_USER = gql`
   }
 `;
 
-export { GET_USER };
+const GET_USERS = gql`
+  query {
+    users {
+      _id
+      firstName
+      lastName
+      username
+      email
+      userType
+      isVerified
+    }
+  }
+`;
+
+export { GET_USER, GET_USERS };

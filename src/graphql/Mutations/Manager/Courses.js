@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const ADD_COURSE = gql`
-  mutation AddLevel(
+  mutation AddCourse(
     $name: String
     $description: String
     $semester: String
@@ -25,4 +25,32 @@ const ADD_COURSE = gql`
   }
 `;
 
-export { ADD_COURSE };
+const EDIT_COURSE = gql`
+  mutation updateCourse(
+    $courseId: ID!
+    $name: String
+    $description: String
+    $semester: String
+  ) {
+    editCourse(
+      courseId: $courseId
+      name: $name
+      description: $description
+      semester: $semester
+    ) {
+      message
+      value
+    }
+  }
+`;
+
+const DELETE_COURSE = gql`
+  mutation deleteCourse($courseId: ID!) {
+    deleteCourse(courseId: $courseId) {
+      message
+      value
+    }
+  }
+`;
+
+export { ADD_COURSE, DELETE_COURSE, EDIT_COURSE };

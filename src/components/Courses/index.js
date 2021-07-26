@@ -65,7 +65,7 @@ export default function Courses() {
                 <Text fontWeight='bold'>{schoolData?.name}</Text>
               </Center>
 
-              <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
                 {allCourses?.map((singleCourseData) => {
                   console.log(singleCourseData);
                   return (
@@ -73,6 +73,8 @@ export default function Courses() {
                       key={singleCourseData?._id}
                       title={singleCourseData?.name}
                       description={singleCourseData?.description}
+                      semester={singleCourseData?.semester}
+                      id={singleCourseData?._id}
                     />
                   );
                 })}
