@@ -7,7 +7,7 @@ import NewOutline from './components/CoursesOutline/newOutline';
 import Faculties from './components/Faculties';
 import AddFaculties from './components/Faculties/AddFaculties';
 import State from './components/State';
-import NewCourse from './components/Courses/NewCourse';
+// import NewCourse from './components/Courses/NewCourse';
 import AllUsers from './components/Users/AllUsers';
 import NotFound from './components/NotFound';
 import Requests from './components/Request';
@@ -66,10 +66,7 @@ function App() {
       path: '/manager/:id/courses',
       component: Courses,
     },
-    {
-      path: '/courses/new',
-      component: NewCourse,
-    },
+   
     {
       path: '/users/all',
       component: AllUsers,
