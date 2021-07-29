@@ -37,7 +37,7 @@ const AddLevel = ({ modalDisclosure, universityData }) => {
       modalDisclosure.onClose();
     },
     refetchQueries: [
-      { query: GET_DEPARTMENTS, variables: { id: universityData._id } },
+      { query: GET_DEPARTMENTS, variables: { id: universityData?._id } },
     ],
   });
 
