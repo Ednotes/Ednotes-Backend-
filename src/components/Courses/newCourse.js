@@ -11,7 +11,7 @@ import { GET_DEPARTMENTS } from '../../graphql/queries/Manager/Departments';
 import { useMutation } from '@apollo/client';
 // import { ImageIcon, DocumentIcon } from '../UI/Svg/Icons';
 
-export default function NewCourse({ universityData, modalDisclosure }) {
+const NewCourse = ({ universityData, modalDisclosure }) => {
   // chakra toast
   const toast = useToast();
 
@@ -204,4 +204,6 @@ export default function NewCourse({ universityData, modalDisclosure }) {
       </Button>
     </>
   );
-}
+};
+
+export default NewCourse;
