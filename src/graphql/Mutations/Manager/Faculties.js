@@ -1,9 +1,12 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 const ADD_FACULTY = gql`
   mutation AddTodo($inputValue: facultyInput) {
     createFaculty(input: $inputValue) {
-      school
+      school {
+        name
+        description
+      }
       name
       description
     }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // chakra
 import {
@@ -13,16 +13,16 @@ import {
   ModalBody,
   ModalCloseButton,
   useDisclosure,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 // graphql
-import { GET_UNIVERSITIES } from "../../graphql/queries/Manager/Universities";
-import { useQuery } from "@apollo/client";
+import { GET_UNIVERSITIES } from '../../graphql/queries/Manager/Universities';
+import { useQuery } from '@apollo/client';
 
 // components
-import SingleUniversity from "./SingleUniversity";
-import CustomHeader from "../UI/CustomHeader";
-import AddUniversity from "./AddUniversity";
+import SingleUniversity from './SingleUniversity';
+import CustomHeader from '../UI/CustomHeader';
+import AddUniversity from './AddUniversity';
 
 export default function Universities() {
   // chakra modal
@@ -33,9 +33,9 @@ export default function Universities() {
   const allUniversities = data?.schools;
   return (
     <>
-      <Box mt={-100} ml={-14} w="65vw">
+      <Box mt={-100} ml={-14} w='65vw'>
         <CustomHeader
-          title="Universities"
+          title='Universities'
           onAddNewButtonClick={addUniversityDisclosure.onOpen}
         />
 
@@ -51,8 +51,8 @@ export default function Universities() {
               {allUniversities?.map((singleUniData) => {
                 return (
                   <SingleUniversity
-                    key={singleUniData?.id}
-                    id={singleUniData?.id}
+                    key={singleUniData?._id}
+                    id={singleUniData?._id}
                     title={singleUniData?.name}
                     state={singleUniData?.location}
                   />

@@ -1,23 +1,11 @@
 import { gql } from '@apollo/client';
 
-const GET_UNIVERSITIES = gql`
-  query {
-    schools {
-      _id
-      name
-      description
-      location
-    }
-  }
-`;
-
-const GET_UNIVERSITY = gql`
+const GET_LEVELS = gql`
   query ($id: ID!) {
     school(id: $id) {
       _id
       name
       description
-      location
       faculties {
         _id
         name
@@ -27,9 +15,23 @@ const GET_UNIVERSITY = gql`
         _id
         name
         description
+        faculty {
+          _id
+        }
+      }
+      levels {
+        _id
+        name
+        faculty {
+          name
+        }
+        dept {
+          name
+        }
+        students
       }
     }
   }
 `;
 
-export { GET_UNIVERSITIES, GET_UNIVERSITY };
+export { GET_LEVELS };

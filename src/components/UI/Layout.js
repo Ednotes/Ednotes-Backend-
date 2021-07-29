@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // chakra
 import {
@@ -10,16 +10,16 @@ import {
   MenuList,
   MenuItem,
   Avatar,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import Sidebar from "./Sidebar";
-import { useQuery } from "@apollo/client";
-import { GET_USER } from "../../graphql/queries/User";
+import Sidebar from './Sidebar';
+import { useQuery } from '@apollo/client';
+import { GET_USER } from '../../graphql/queries/User';
 
 const Layout = ({ children }) => {
   const logoutHandler = () => {
-    localStorage.removeItem("ed-toke");
-    window.location.href = "/";
+    localStorage.removeItem('ed-toke');
+    window.location.href = '/';
   };
 
   const { data } = useQuery(GET_USER);
@@ -28,32 +28,34 @@ const Layout = ({ children }) => {
 
   return (
     <Box>
-      <Box bg="#003049" h="10rem" color="#fff">
-        <Flex float="right" mt={8} mx={14}>
-          <Text color="#fff" my="auto" mr={2}>
-            {`${userData?.firstName} ${userData?.lastName}`}
-          </Text>
+      <Box bg='#003049' h='10rem' color='#fff'>
+        {userData && (
+          <Flex float='right' mt={8} mx={14}>
+            <Text color='#fff' my='auto' mr={2}>
+              {`${userData?.firstName} ${userData?.lastName}`}
+            </Text>
 
-          <Menu>
-            <MenuButton>
-              <Avatar
-                my="auto"
-                name={`${userData?.firstName} ${userData?.lastName}`}
-                // h="30px"
-                // src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-              />
-            </MenuButton>
-            <MenuList>
-              <MenuItem onClick={logoutHandler} color="black">
-                Logout
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        </Flex>
+            <Menu>
+              <MenuButton>
+                <Avatar
+                  my='auto'
+                  name={`${userData?.firstName} ${userData?.lastName}`}
+                  // h="30px"
+                  // src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+                />
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={logoutHandler} color='black'>
+                  Logout
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Flex>
+        )}
       </Box>
 
-      <Flex bg="#F8F8F8" minH="100vh">
-        <Box rounded="lg" mx={20} h="600px" w="280px" bg="#fff" mt={-100}>
+      <Flex bg='#F8F8F8' minH='100vh'>
+        <Box rounded='lg' mx={20} h='600px' w='280px' bg='#fff' mt={-100}>
           <Sidebar />
         </Box>
         <Box>{children}</Box>
