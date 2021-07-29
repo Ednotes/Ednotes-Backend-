@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Text, Button } from '@chakra-ui/react';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -7,9 +7,9 @@ const Back = () => {
 
   return (
     <>
-      <Text fontSize='sm' cursor='pointer' mb={2} onClick={goBack}>
+      <Button variant='ghost' fontSize='sm' mb={1} onClick={goBack}>
         Go Back
-      </Text>
+      </Button>
     </>
   );
 };

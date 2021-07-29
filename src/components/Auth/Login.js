@@ -55,7 +55,7 @@ const Login = () => {
 
   return (
     <Flex flexDir='column' w='100%' h='100vh' overflowY='auto'>
-      <Box flexDir='column' m='auto'>
+      <Box flexDir='column' m='auto' minW={{ base: 'auto', md: '300px' }}>
         <Text mb={6} fontSize='3xl' fontWeight={900}>
           Login
         </Text>

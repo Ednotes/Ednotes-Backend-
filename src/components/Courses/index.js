@@ -103,7 +103,10 @@ export default function Courses() {
               universityData={schoolData}
               modalDisclosure={addCourseDisclosure}
             /> */}
-            <CreateNewCourse />
+            <CreateNewCourse
+              universityData={schoolData}
+              modalDisclosure={addCourseDisclosure}
+            />
           </ModalBody>
         </ModalContent>
       </Modal>
