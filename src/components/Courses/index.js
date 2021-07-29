@@ -23,10 +23,11 @@ import { GET_COURSES, GET_SCHOOL } from '../../graphql/queries/Manager/Courses';
 // components
 import SingleCourse from './SingleCourse';
 import CustomHeader from '../UI/CustomHeader';
-import NewCourse from './NewCourse';
+// import NewCourse from './NewCourse';
 import { useParams } from 'react-router';
 import Back from '../UI/Back';
 import { Empty, Loader } from '../UI/Fetching';
+import CreateNewCourse from './CreateNewCourse';
 
 export default function Courses() {
   // chakra modal
@@ -98,10 +99,11 @@ export default function Courses() {
           <ModalHeader>Add Course</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <NewCourse
+            {/* <NewCourse
               universityData={schoolData}
               modalDisclosure={addCourseDisclosure}
-            />
+            /> */}
+            <CreateNewCourse />
           </ModalBody>
         </ModalContent>
       </Modal>
