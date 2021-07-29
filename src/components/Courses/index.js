@@ -27,6 +27,7 @@ import CustomHeader from '../UI/CustomHeader';
 import { useParams } from 'react-router';
 import Back from '../UI/Back';
 import { Empty, Loader } from '../UI/Fetching';
+import CreateNewCourse from './CreateNewCourse';
 
 export default function Courses() {
   // chakra modal
@@ -98,15 +99,11 @@ export default function Courses() {
           <ModalHeader>Add Course</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <AddDepartment
-              universityData={schoolData}
-              modalDisclosure={addCourseDisclosure}
-            /> */}
             {/* <NewCourse
               universityData={schoolData}
               modalDisclosure={addCourseDisclosure}
             /> */}
-            hello
+            <CreateNewCourse />
           </ModalBody>
         </ModalContent>
       </Modal>
