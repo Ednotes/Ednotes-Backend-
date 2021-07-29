@@ -25,6 +25,7 @@ const ADD_COURSE = gql`
   }
 `;
 
+// eslint-disable-next-line
 const EDIT_COURSE = gql`
   mutation updateCourse(
     $courseId: ID!
