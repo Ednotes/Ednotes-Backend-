@@ -33,12 +33,6 @@ const Login = () => {
 
       setToken(message);
       window.location.href = '/';
-
-      toast({
-        description: message,
-        duration: 9000,
-        isClosable: true,
-      });
     },
   });
 
