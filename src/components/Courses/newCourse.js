@@ -9,7 +9,6 @@ import SearchableSelect from '../UI/Forms/SearchableSelect';
 import { ADD_COURSE } from '../../graphql/Mutations/Manager/Courses';
 import { GET_DEPARTMENTS } from '../../graphql/queries/Manager/Departments';
 import { useMutation } from '@apollo/client';
-// import { ImageIcon, DocumentIcon } from '../UI/Svg/Icons';
 
 const NewCourse = ({ universityData, modalDisclosure }) => {
   // chakra toast
@@ -24,7 +23,6 @@ const NewCourse = ({ universityData, modalDisclosure }) => {
     level: '',
     semester: '',
   });
-  console.log(data);
   // GRAPHQL
   const [addCourseHandler, { loading }] = useMutation(ADD_COURSE, {
     onCompleted() {

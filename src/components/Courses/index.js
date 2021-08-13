@@ -23,11 +23,10 @@ import { GET_COURSES, GET_SCHOOL } from '../../graphql/queries/Manager/Courses';
 // components
 import SingleCourse from './SingleCourse';
 import CustomHeader from '../UI/CustomHeader';
-// import NewCourse from './NewCourse';
 import { useParams } from 'react-router';
 import Back from '../UI/Back';
 import { Empty, Loader } from '../UI/Fetching';
-import CreateNewCourse from './CreateNewCourse';
+import NewCourse from './NewCourse';
 
 export default function Courses() {
   // chakra modal
@@ -46,7 +45,12 @@ export default function Courses() {
 
   const schoolData = sData?.school;
   const allCourses = data?.get_all_courses?.edges;
-
+  const coursesForThisUniversity = allCourses?.filter((course) => {
+    console.log(id);
+    console.log(course);
+    return id === course.school._id;
+  });
+  console.log(coursesForThisUniversity);
   return (
     <>
       <Box mt={-100} ml={-14} w='65vw'>
@@ -67,8 +71,7 @@ export default function Courses() {
               </Center>
 
               <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-                {allCourses?.map((singleCourseData) => {
-                  console.log(singleCourseData);
+                {coursesForThisUniversity?.map((singleCourseData) => {
                   return (
                     <SingleCourse
                       key={singleCourseData?._id}
@@ -81,7 +84,7 @@ export default function Courses() {
                 })}
               </SimpleGrid>
 
-              {allCourses?.length === 0 && (
+              {coursesForThisUniversity?.length === 0 && (
                 <Empty text='No Courses have been added' />
               )}
             </Flex>
@@ -99,11 +102,7 @@ export default function Courses() {
           <ModalHeader>Add Course</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            {/* <NewCourse
-              universityData={schoolData}
-              modalDisclosure={addCourseDisclosure}
-            /> */}
-            <CreateNewCourse
+            <NewCourse
               universityData={schoolData}
               modalDisclosure={addCourseDisclosure}
             />

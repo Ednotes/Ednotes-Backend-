@@ -21,6 +21,9 @@ const ADD_COURSE = gql`
     ) {
       message
       value
+      data {
+        _id
+      }
     }
   }
 `;

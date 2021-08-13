@@ -80,7 +80,7 @@ export default function Departments() {
               </SimpleGrid>
 
               {allLevels?.length === 0 && (
-                <Empty text='No Departments have been added' />
+                <Empty text='No Levels have been added' />
               )}
             </Flex>
           )}

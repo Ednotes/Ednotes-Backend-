@@ -44,6 +44,10 @@ const GET_COURSES = gql`
         name
         description
         semester
+        school {
+          _id
+          name
+        }
       }
     }
   }
