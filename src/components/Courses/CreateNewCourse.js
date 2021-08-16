@@ -7,10 +7,10 @@ import { Box, Button, SimpleGrid, useToast } from '@chakra-ui/react';
 import CustomFormControl from '../UI/Forms/CustomFormControl';
 import SearchableSelect from '../UI/Forms/SearchableSelect';
 import { ADD_COURSE } from '../../graphql/Mutations/Manager/Courses';
-import { GET_DEPARTMENTS } from '../../graphql/queries/Manager/Departments';
 import { useMutation } from '@apollo/client';
+import { GET_COURSES, GET_SCHOOL } from '../../graphql/queries/Manager/Courses';
 
-const NewCourse = ({ universityData, modalDisclosure }) => {
+const CreateNewCourse = ({ universityData, modalDisclosure }) => {
   // chakra toast
   const toast = useToast();
 
@@ -39,7 +39,8 @@ const NewCourse = ({ universityData, modalDisclosure }) => {
       modalDisclosure.onClose();
     },
     refetchQueries: [
-      { query: GET_DEPARTMENTS, variables: { id: universityData?._id } },
+      { query: GET_SCHOOL, variables: { id: universityData?._id } },
+      { query: GET_COURSES },
     ],
   });
 
@@ -204,4 +205,4 @@ const NewCourse = ({ universityData, modalDisclosure }) => {
   );
 };
 
-export default NewCourse;
+export default CreateNewCourse;

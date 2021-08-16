@@ -1,21 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 // import reportWebVitals from './reportWebVitals';
-import { ChakraProvider } from "@chakra-ui/react";
-import customTheme from "./chakra/theme";
-import { ApolloProvider } from "@apollo/client";
-import client from "./graphql";
+import { ChakraProvider } from '@chakra-ui/react';
+import customTheme from './chakra/theme';
+import { ApolloProvider } from '@apollo/client';
+import client from './graphql';
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.render(
-  <ApolloProvider client={client}>
-    <ChakraProvider theme={customTheme}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </ChakraProvider>
-  </ApolloProvider>,
-  document.getElementById("root")
+  <RecoilRoot>
+    <ApolloProvider client={client}>
+      <ChakraProvider theme={customTheme}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ChakraProvider>
+    </ApolloProvider>
+  </RecoilRoot>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
