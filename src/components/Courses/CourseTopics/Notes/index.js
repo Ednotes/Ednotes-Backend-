@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Button, Flex, Box } from '@chakra-ui/react';
+import { Button, Flex, Box, Tag } from '@chakra-ui/react';
 import { useQuery } from '@apollo/client';
 import { GET_NOTES } from '../../../../graphql/queries/Manager/Notes';
 import { Loader, Empty } from '../../../UI/Fetching';
-import NewNote from './NewNote';
-import Back from '../../../UI/Back';
 import drawerAtom from '../../../../atoms/drawerAtom';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import SingleNote from './SingleNote';
 
 const Notes = ({ courseId }) => {
-  const drawerState = useRecoilValue(drawerAtom);
+  const [drawerState, setDrawerState] = useRecoilState(drawerAtom);
   const topicId = drawerState.currentTopicData?._id;
 
   const { loading, data } = useQuery(GET_NOTES, {
@@ -22,76 +20,62 @@ const Notes = ({ courseId }) => {
 
   const allTopicNotes = data?.get_topic_notes?.edges;
 
-  const [createNote, setCreateNote] = useState(false);
-  const [showNotes, setShowNotes] = useState(true);
-  // const [singleNoteValue, setSingleNoteValue] = useState();
-  // const [editMode, setEditMode] = useState(false);
-
-  const showAllNotes = () => {
-    setCreateNote(false);
-    setShowNotes(true);
+  const showCreateNote = () => {
+    setDrawerState({
+      ...drawerState,
+      createNote: true,
+    });
   };
+
   return (
     <Box>
-      {createNote && (
-        <>
-          <Back showIcon mb={6} variant='solid' onClick={showAllNotes} />
-          <NewNote
-            // defaultValue={singleNoteValue}
-            goBack={showAllNotes}
-            topicId={topicId}
-            courseId={courseId}
-            editMode={drawerState.editNoteMode}
-          />
-        </>
-      )}
+      {loading && <Loader />}
 
-      {showNotes && (
-        <>
-          {loading && <Loader />}
+      {!loading && data && (
+        <Flex flexDir='column' w='100%'>
+          <Flex>
+            <Tag
+              my='auto'
+              // color='gray.500'
+              fontSize='14px'
+              fontWeight='bold'
+            >
+              {allTopicNotes?.length} Note(s)
+            </Tag>
+            <Button
+              onClick={showCreateNote}
+              colorScheme='primary'
+              mb={4}
+              ml='auto'
+              fontSize='14px'
+            >
+              Add New Note
+            </Button>
+          </Flex>
 
-          {!loading && data && (
+          {allTopicNotes?.length > 0 && (
             <Flex flexDir='column' w='100%'>
+              {allTopicNotes?.map((cd) => {
+                return (
+                  <SingleNote key={cd?._id} data={cd} courseId={courseId} />
+                );
+              })}
+            </Flex>
+          )}
+
+          {allTopicNotes?.length === 0 && (
+            <Empty text='No Notes have been added'>
               <Button
-                onClick={() => {
-                  setCreateNote(true);
-                  setShowNotes(false);
-                }}
+                onClick={showCreateNote}
                 colorScheme='primary'
-                mb={4}
-                ml='auto'
+                mt={2}
                 fontSize='14px'
               >
                 Add New Note
               </Button>
-              {allTopicNotes?.length > 0 && (
-                <Flex flexDir='column' w='100%'>
-                  {allTopicNotes?.map((cd) => {
-                    return (
-                      <SingleNote key={cd?._id} data={cd} courseId={courseId} />
-                    );
-                  })}
-                </Flex>
-              )}
-
-              {allTopicNotes?.length === 0 && (
-                <Empty text='No Notes have been added'>
-                  <Button
-                    onClick={() => {
-                      setCreateNote(true);
-                      setShowNotes(false);
-                    }}
-                    colorScheme='primary'
-                    mt={2}
-                    fontSize='14px'
-                  >
-                    Add New Note
-                  </Button>
-                </Empty>
-              )}
-            </Flex>
+            </Empty>
           )}
-        </>
+        </Flex>
       )}
     </Box>
   );

@@ -38,7 +38,7 @@ const NewTopic = ({ courseId, goBack, defaultValue, editMode }) => {
       });
       goBack();
     },
-    refetchQueries: { query: GET_TOPICS, variables: { id: courseId } },
+    refetchQueries: [{ query: GET_TOPICS, variables: { id: courseId } }],
   });
 
   const [editTopicHandler, { loading: editLoading }] = useMutation(EDIT_TOPIC, {
@@ -56,7 +56,7 @@ const NewTopic = ({ courseId, goBack, defaultValue, editMode }) => {
       });
       goBack();
     },
-    refetchQueries: { query: GET_TOPICS, variables: { id: courseId } },
+    refetchQueries: [{ query: GET_TOPICS, variables: { id: courseId } }],
   });
 
   return (
@@ -84,7 +84,6 @@ const NewTopic = ({ courseId, goBack, defaultValue, editMode }) => {
       <Button
         isDisabled={!data.title || !data.description}
         colorScheme='primary'
-        w='100%'
         h='48px'
         isLoading={loading || editLoading}
         onClick={() => {

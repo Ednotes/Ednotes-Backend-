@@ -30,7 +30,7 @@ const UPLOAD_NOTE_ATTACHMENT = gql`
 
 const EDIT_NOTE = gql`
   mutation editNote($noteId: ID!, $name: String!, $text: String!) {
-    editNote(noteId: $noteId, name: $name, text: $text) {
+    updateNote(noteId: $noteId, name: $name, text: $text) {
       message
       value
     }

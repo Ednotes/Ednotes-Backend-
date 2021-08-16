@@ -30,6 +30,7 @@ const SingleAttachment = ({ data }) => {
       pt={6}
       pb={5}
       px={6}
+      mb={5}
       d='flex'
       flexDir='column'
       h='200px'

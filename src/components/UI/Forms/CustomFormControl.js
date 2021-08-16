@@ -17,6 +17,7 @@ const CustomFormControl = ({
   placeholder,
   onChange,
   value,
+  rows,
 }) => {
   return (
     <FormControl id={id}>
@@ -31,6 +32,7 @@ const CustomFormControl = ({
           placeholder={placeholder}
           onChange={onChange}
           value={value}
+          rows={rows}
         />
       ) : (
         <Input

@@ -14,6 +14,7 @@ const drawerAtom = atom({
     showNotes: true,
     singleNoteValue: '',
     editNoteMode: false,
+    currentNoteData: {},
   },
 });
 

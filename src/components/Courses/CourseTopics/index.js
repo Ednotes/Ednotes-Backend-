@@ -8,6 +8,7 @@ import Back from '../../UI/Back';
 import { Empty, Loader } from '../../UI/Fetching';
 import NewTopic from './NewTopic';
 import Notes from './Notes';
+import NewNote from './Notes/NewNote';
 import SingleTopic from './SingleTopic';
 
 // useRecoilState;
@@ -34,8 +35,16 @@ const CourseTopics = ({ courseId }) => {
     });
   };
 
+  const showAllNotes = () => {
+    setDrawerState({
+      ...drawerState,
+      createNote: false,
+    });
+  };
+
   return (
     <Box mb={6}>
+      {/* Create topic */}
       {drawerState.showTopics && drawerState.createTopic && (
         <>
           <Back showIcon mb={6} variant='solid' onClick={showAllTopics} />
@@ -48,6 +57,7 @@ const CourseTopics = ({ courseId }) => {
         </>
       )}
 
+      {/* show topics */}
       {drawerState.showTopics &&
         !drawerState.createTopic &&
         !drawerState.showNotes && (
@@ -115,12 +125,28 @@ const CourseTopics = ({ courseId }) => {
           </>
         )}
 
-      {!drawerState.showTopics && drawerState.showNotes && (
-        <Box>
-          <Back showIcon mb={6} variant='solid' onClick={showAllTopics} />
-          <Notes courseId={courseId} />
-        </Box>
-      )}
+      {/* show notes */}
+      {!drawerState.showTopics &&
+        drawerState.showNotes &&
+        !drawerState.createNote && (
+          <Box>
+            <Back showIcon mb={6} variant='solid' onClick={showAllTopics} />
+            <Notes courseId={courseId} />
+          </Box>
+        )}
+
+      {!drawerState.showTopics &&
+        drawerState.showNotes &&
+        drawerState.createNote && (
+          <>
+            <Back showIcon mb={6} variant='solid' onClick={showAllNotes} />
+            <NewNote
+              goBack={showAllNotes}
+              courseId={courseId}
+              editMode={drawerState.editNoteMode}
+            />
+          </>
+        )}
     </Box>
   );
 };
