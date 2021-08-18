@@ -10,6 +10,7 @@ import {
   MenuList,
   MenuItem,
   Avatar,
+  Center,
 } from '@chakra-ui/react';
 
 import Sidebar from './Sidebar';
@@ -27,47 +28,62 @@ const Layout = ({ children }) => {
   const userData = data?.user;
 
   return (
-    <Box>
-      <Box
-        d='flex'
-        flexDir='column'
-        w='100%'
-        bg='#003049'
-        h='10rem'
-        color='#fff'
-      >
-        {userData && (
-          <Menu>
-            <MenuButton ml='auto' mt={8} mr={14}>
-              <Flex>
-                <Text color='#fff' my='auto' mr={2}>
-                  {`${userData?.firstName} ${userData?.lastName}`}
-                </Text>
+    <>
+      <Box d={{ base: 'none', md: 'block' }}>
+        <Box
+          d='flex'
+          flexDir='column'
+          w='100%'
+          bg='#003049'
+          h='10rem'
+          color='#fff'
+        >
+          {userData && (
+            <Menu>
+              <MenuButton ml='auto' mt={8} mr={14}>
+                <Flex>
+                  <Text color='#fff' my='auto' mr={2}>
+                    {`${userData?.firstName} ${userData?.lastName}`}
+                  </Text>
 
-                <Avatar
-                  my='auto'
-                  name={`${userData?.firstName} ${userData?.lastName}`}
-                  // h="30px"
-                  // src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-                />
-              </Flex>
-            </MenuButton>
-            <MenuList>
-              <MenuItem onClick={logoutHandler} color='black'>
-                Logout
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        )}
+                  <Avatar
+                    my='auto'
+                    name={`${userData?.firstName} ${userData?.lastName}`}
+                    // h="30px"
+                    // src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+                  />
+                </Flex>
+              </MenuButton>
+              <MenuList>
+                <MenuItem onClick={logoutHandler} color='black'>
+                  Logout
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          )}
+        </Box>
+
+        <Flex bg='#F8F8F8' minH='100vh'>
+          <Box rounded='lg' mx={20} h='600px' w='280px' bg='#fff' mt={-100}>
+            <Sidebar />
+          </Box>
+          <Box>{children}</Box>
+        </Flex>
       </Box>
 
-      <Flex bg='#F8F8F8' minH='100vh'>
-        <Box rounded='lg' mx={20} h='600px' w='280px' bg='#fff' mt={-100}>
-          <Sidebar />
-        </Box>
-        <Box>{children}</Box>
-      </Flex>
-    </Box>
+      <Center
+        h='100vh'
+        textAlign='center'
+        p={4}
+        d={{ base: 'flex', md: 'none' }}
+        flexDir='column'
+      >
+        <Text>
+          This platform does not currently support mobile view, please switch to
+          a desktop
+        </Text>
+      </Center>
+    </>
   );
 };
 
