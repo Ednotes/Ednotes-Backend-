@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react';
 
 // icons
-import { PlusIcon, FilterIcon } from '../UI/Svg/Icons';
+import { PlusIcon } from '../UI/Svg/Icons';
 
 const CustomHeader = ({
   title,
@@ -69,7 +69,7 @@ const CustomHeader = ({
               </Button>
             </Link>
 
-            <Button
+            {/* <Button
               mx={2}
               onClick={filterButtonOnClick}
               h={10}
@@ -81,7 +81,7 @@ const CustomHeader = ({
               <Text as='span' ml={2}>
                 Filters
               </Text>
-            </Button>
+            </Button> */}
           </Box>
         )}
       </Flex>

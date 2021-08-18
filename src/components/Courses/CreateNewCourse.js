@@ -136,46 +136,6 @@ const CreateNewCourse = ({ universityData, modalDisclosure }) => {
             onChange={(e) => setDataHandler('semester', e.value)}
           />
         </SimpleGrid>
-
-        {/* <HStack mt={10}>
-          <Center
-            _hover={{ borderColor: 'brand.500' }}
-            w='224px'
-            h='224px'
-            borderWidth='1px'
-            cursor='pointer'
-            p={10}
-            flexDir='column'
-            textAlign='center'
-            borderRadius='12px'
-            bg='white'
-          >
-            <ImageIcon />
-            <Text fontSize='16px' mt={2} color='brand.500'>
-              Upload title Image
-            </Text>
-          </Center>
-
-          <Center
-            _hover={{ borderColor: 'brand.500' }}
-            w='224px'
-            h='224px'
-            borderWidth='1px'
-            cursor='pointer'
-            p={10}
-            flexDir='column'
-            textAlign='center'
-            borderRadius='12px'
-            bg='white'
-          >
-            <DocumentIcon />
-            <Text fontSize='16px' mt={2} color='brand.500'>
-              Upload <br />
-              Course
-            </Text>
-          </Center>
-        </HStack>
-     */}
       </Box>
 
       <Button

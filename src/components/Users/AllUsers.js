@@ -15,17 +15,16 @@ import {
 } from '@chakra-ui/react';
 import { GET_USERS } from '../../graphql/queries/User';
 
-// import img1 from '../../images/Ellipse 274.png';
-// import img2 from '../../images/Icon material-edit.png';
-
 // components
 import CustomHeader from '../UI/CustomHeader';
 import CustomModal from '../UI/CustomModal';
 import { Empty, Loader } from '../UI/Fetching';
+import CreateUser from './CreateUser';
 import Filter from './Filter';
 
 export default function AllUsers() {
   const filterDisclosure = useDisclosure();
+  const userTypeDisclosure = useDisclosure();
 
   const { data, loading } = useQuery(GET_USERS);
 
@@ -42,6 +41,7 @@ export default function AllUsers() {
       <CustomHeader
         title={`All Users (${allUsers?.length || 0})`}
         filterButtonOnClick={filterDisclosure.onOpen}
+        onAddNewButtonClick={userTypeDisclosure.onOpen}
       />
 
       <Box mt={16}>
@@ -150,6 +150,10 @@ export default function AllUsers() {
 
       <CustomModal size='xl' title='Filter Users' disclosure={filterDisclosure}>
         <Filter />
+      </CustomModal>
+
+      <CustomModal size='xl' title='Add User' disclosure={userTypeDisclosure}>
+        <CreateUser disclosure={userTypeDisclosure} />
       </CustomModal>
     </Box>
   );
