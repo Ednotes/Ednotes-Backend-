@@ -5,6 +5,13 @@ import { Box, SimpleGrid } from '@chakra-ui/react';
 import ManagerComponent from './ManagerComponent';
 import CustomHeader from '../UI/CustomHeader';
 import { useParams } from 'react-router';
+import {
+  ManageCoursesIcon,
+  ManageDepartmentsIcon,
+  ManageFacultiesIcon,
+  ManagePastPapersIcon,
+  ManageStatesIcon,
+} from '../UI/Svg/ManagerIcons';
 
 export default function Manager() {
   const { id } = useParams();
@@ -13,31 +20,31 @@ export default function Manager() {
     {
       title: 'Manage Courses',
       href: `/manager/${id}/courses`,
-      icon: '',
+      icon: <ManageCoursesIcon />,
     },
 
     {
       title: 'Manage Faculties',
       href: `/manager/${id}/faculties`,
-      icon: '',
+      icon: <ManageFacultiesIcon />,
     },
 
     {
       title: 'Manage Departments',
       href: `/manager/${id}/departments`,
-      icon: '',
+      icon: <ManageDepartmentsIcon />,
     },
 
     {
       title: 'Manage Levels',
       href: `/manager/${id}/levels`,
-      icon: '',
+      icon: <ManageStatesIcon />,
     },
 
     {
       title: 'Manage Past Papers',
       href: '/pastPapers',
-      icon: '',
+      icon: <ManagePastPapersIcon />,
     },
   ];
 
@@ -47,13 +54,12 @@ export default function Manager() {
 
       <Box mt={16}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-          {allManagement.map((manager, index) => {
+          {allManagement.map((mr, index) => {
             return (
               <ManagerComponent
                 key={`0${index}`}
-                title={manager.title}
-                href={manager.href}
-                icon={manager.icon}
+                title={mr.title}
+                href={mr.href}
               />
             );
           })}
