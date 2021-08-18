@@ -33,7 +33,7 @@ export default function AllUsers() {
     return ud?.userType === 'student';
   });
   const allAdmins = allUsers?.filter((ud) => {
-    return ud?.userType === 'admin';
+    return ud?.userType === 'admin' || ud?.userType === 'super_admin';
   });
 
   return (
@@ -123,7 +123,9 @@ export default function AllUsers() {
                               ml='auto'
                               fontSize='12px'
                             >
-                              {user?.userType}
+                              {user?.userType === 'admin'
+                                ? 'admin'
+                                : 'super admin'}
                             </Tag>
                           </Flex>
 

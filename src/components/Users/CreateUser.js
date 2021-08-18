@@ -217,8 +217,9 @@ const CreateUser = ({ modalDisclosure }) => {
           <Text mb={1}>
             Email: <b>{createdUser?.email}</b>
           </Text>
-          <Text mb={1}>
-            User Type: <b>{createdUser?.userType}</b>
+          <Text mb={1} textTransform='capitalize'>
+            User Type:{' '}
+            <b>{createdUser?.userType === 'admin' ? 'admin' : 'super admin'}</b>
           </Text>
         </Box>
       )}
