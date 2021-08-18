@@ -196,7 +196,7 @@ const CreateUser = ({ modalDisclosure }) => {
               }
             }}
           >
-            Create Course
+            Add User
           </Button>
         </>
       )}
