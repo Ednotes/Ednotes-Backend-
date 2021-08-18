@@ -4,16 +4,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // chakra
-import { Flex, Text, Button } from '@chakra-ui/react';
-import {
-  ManageDepartmentsIcon,
-  ManageFacultiesIcon,
-  ManageLevelsIcon,
-  ManagePastPapersIcon,
-} from '../UI/Svg/ManagerIcons';
-import { ManageCoursesIcon } from '../UI/Svg/ManagerIcons';
+import { Flex, Center, Image, Text, Button } from '@chakra-ui/react';
+// import { ManageCoursesIcon } from "../UI/Svg/ManagerIcons";
 
-const ManagerComponent = ({ Icon, href, title, children }) => {
+const ManagerComponent = ({ icon, href, title, children }) => {
   return (
     <Flex
       bg='white'
@@ -26,12 +20,9 @@ const ManagerComponent = ({ Icon, href, title, children }) => {
       flexDir='column'
       textAlign='center'
     >
-      {title === 'Manage Courses' && <ManageCoursesIcon />}
-      {title === 'Manage Faculties' && <ManageFacultiesIcon />}
-      {title === 'Manage Departments' && <ManageDepartmentsIcon />}
-      {title === 'Manage Levels' && <ManageLevelsIcon />}
-      {title === 'Manage Past Papers' && <ManagePastPapersIcon />}
-
+      <Center bg='#E8EBF2' rounded='full' w={20} h={20}>
+        <Image src={icon} />
+      </Center>
       <Text fontWeight='bold' p={3}>
         {title}
       </Text>

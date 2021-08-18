@@ -157,7 +157,12 @@ const SingleCourse = ({ data }) => {
       {/* other information */}
       <Box mt={4}>
         <Text fontSize='14px'>{description}</Text>
-        <Tag fontSize='13px' mt={8} colorScheme='blue'>
+        <Tag
+          fontSize='13px'
+          mt={8}
+          colorScheme='blue'
+          textTransform='capitalize'
+        >
           {semester} semester
         </Tag>
       </Box>

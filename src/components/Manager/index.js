@@ -5,13 +5,12 @@ import { Box, SimpleGrid } from '@chakra-ui/react';
 import ManagerComponent from './ManagerComponent';
 import CustomHeader from '../UI/CustomHeader';
 import { useParams } from 'react-router';
-import {
-  ManageCoursesIcon,
-  ManageDepartmentsIcon,
-  ManageFacultiesIcon,
-  ManagePastPapersIcon,
-  ManageStatesIcon,
-} from '../UI/Svg/ManagerIcons';
+
+import CourseImage from './../../images/Path 984.png';
+import FacultiesImage from './../../images/Mask Group 11.png';
+import DepartmentsImage from './../../images/Mask Group 9.png';
+import LevelsImage from './../../images/Mask Group 6.png';
+import PastPapersImage from './../../images/Mask Group 12.png';
 
 export default function Manager() {
   const { id } = useParams();
@@ -20,31 +19,31 @@ export default function Manager() {
     {
       title: 'Manage Courses',
       href: `/manager/${id}/courses`,
-      icon: <ManageCoursesIcon />,
+      icon: CourseImage,
     },
 
     {
       title: 'Manage Faculties',
       href: `/manager/${id}/faculties`,
-      icon: <ManageFacultiesIcon />,
+      icon: FacultiesImage,
     },
 
     {
       title: 'Manage Departments',
       href: `/manager/${id}/departments`,
-      icon: <ManageDepartmentsIcon />,
+      icon: DepartmentsImage,
     },
 
     {
       title: 'Manage Levels',
       href: `/manager/${id}/levels`,
-      icon: <ManageStatesIcon />,
+      icon: LevelsImage,
     },
 
     {
       title: 'Manage Past Papers',
       href: '/pastPapers',
-      icon: <ManagePastPapersIcon />,
+      icon: PastPapersImage,
     },
   ];
 
@@ -54,12 +53,13 @@ export default function Manager() {
 
       <Box mt={16}>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={5}>
-          {allManagement.map((mr, index) => {
+          {allManagement.map((manager, index) => {
             return (
               <ManagerComponent
                 key={`0${index}`}
-                title={mr.title}
-                href={mr.href}
+                title={manager.title}
+                href={manager.href}
+                icon={manager.icon}
               />
             );
           })}
