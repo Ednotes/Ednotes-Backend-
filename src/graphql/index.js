@@ -29,6 +29,8 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 let url = "https://ednotes-api.herokuapp.com/graphql";
 
+//"http://localhost:7000/graphql";
+
 const uploadLink = createUploadLink({ uri: url });
 
 // combining auth, error and upload link

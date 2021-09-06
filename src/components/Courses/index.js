@@ -1,103 +1,104 @@
-import React from 'react';
+import React from "react";
 
 // chakra
 import {
-  Box,
-  SimpleGrid,
-  Flex,
-  Center,
-  Text,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalCloseButton,
-  useDisclosure,
-} from '@chakra-ui/react';
+	Box,
+	SimpleGrid,
+	Flex,
+	Center,
+	Text,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalBody,
+	ModalCloseButton,
+	useDisclosure,
+} from "@chakra-ui/react";
 
 // graphql
-import { useQuery } from '@apollo/client';
-import { GET_COURSES, GET_SCHOOL } from '../../graphql/queries/Manager/Courses';
+import { useQuery } from "@apollo/client";
+import { GET_COURSES, GET_SCHOOL } from "../../graphql/queries/Manager/Courses";
 
 // components
-import SingleCourse from './SingleCourse';
-import CustomHeader from '../UI/CustomHeader';
-import { useParams } from 'react-router';
-import Back from '../UI/Back';
-import { Empty, Loader } from '../UI/Fetching';
-import CreateNewCourse from './CreateNewCourse';
+import SingleCourse from "./SingleCourse";
+import CustomHeader from "../UI/CustomHeader";
+import { useParams } from "react-router";
+import Back from "../UI/Back";
+import { Empty, Loader } from "../UI/Fetching";
+import CreateNewCourse from "./CreateNewCourse";
 
 export default function Courses() {
-  // chakra modal
-  const addCourseDisclosure = useDisclosure();
+	// chakra modal
+	const addCourseDisclosure = useDisclosure();
 
-  // university id
-  const { id } = useParams();
+	// university id
+	const { id } = useParams();
 
-  // Graphql
-  const { data: sData, loading: schoolLoading } = useQuery(GET_SCHOOL, {
-    variables: {
-      id,
-    },
-  });
-  const { data, loading } = useQuery(GET_COURSES);
+	// Graphql
+	const { data: sData, loading: schoolLoading } = useQuery(GET_SCHOOL, {
+		variables: {
+			id,
+		},
+	});
+	const { data, loading } = useQuery(GET_COURSES);
+	console.log("school data", sData, "courses", data);
 
-  const schoolData = sData?.school;
-  const allCourses = data?.get_all_courses?.edges;
-  const coursesForThisUniversity = allCourses?.filter((course) => {
-    return id === course.school._id;
-  });
-  return (
-    <>
-      <Box mt={-100} ml={-14} w='65vw'>
-        {/* header */}
-        <CustomHeader
-          title='Courses'
-          onAddNewButtonClick={addCourseDisclosure.onOpen}
-        />
+	const schoolData = sData?.school;
+	const allCourses = data?.get_all_courses?.edges;
+	const coursesForThisUniversity = allCourses?.filter((course) => {
+		return id === course.school._id;
+	});
+	return (
+		<>
+			<Box mt={-100} ml={-14} w="65vw">
+				{/* header */}
+				<CustomHeader
+					title="Courses"
+					onAddNewButtonClick={addCourseDisclosure.onOpen}
+				/>
 
-        <Box mt={16}>
-          <Back />
-          {loading && schoolLoading && <Loader />}
+				<Box mt={16}>
+					<Back />
+					{loading && schoolLoading && <Loader />}
 
-          {!loading && !loading && data && (
-            <Flex flexDir='column' w='100%'>
-              <Center flexDir='column' bg='gray.200' py={5} mb={5}>
-                <Text fontWeight='bold'>{schoolData?.name}</Text>
-              </Center>
+					{!loading && !loading && data && (
+						<Flex flexDir="column" w="100%">
+							<Center flexDir="column" bg="gray.200" py={5} mb={5}>
+								<Text fontWeight="bold">{schoolData?.name}</Text>
+							</Center>
 
-              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} mb={10}>
-                {coursesForThisUniversity?.map((singleCourseData) => {
-                  return <SingleCourse data={singleCourseData} />;
-                })}
-              </SimpleGrid>
+							<SimpleGrid columns={{ base: 1, md: 2 }} spacing={5} mb={10}>
+								{coursesForThisUniversity?.map((singleCourseData) => {
+									return <SingleCourse data={singleCourseData} />;
+								})}
+							</SimpleGrid>
 
-              {coursesForThisUniversity?.length === 0 && (
-                <Empty text='No Courses have been added' />
-              )}
-            </Flex>
-          )}
-        </Box>
-      </Box>
+							{coursesForThisUniversity?.length === 0 && (
+								<Empty text="No Courses have been added" />
+							)}
+						</Flex>
+					)}
+				</Box>
+			</Box>
 
-      <Modal
-        size='xl'
-        isOpen={addCourseDisclosure.isOpen}
-        onClose={addCourseDisclosure.onClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Add Course</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <CreateNewCourse
-              universityData={schoolData}
-              modalDisclosure={addCourseDisclosure}
-            />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </>
-  );
+			<Modal
+				size="xl"
+				isOpen={addCourseDisclosure.isOpen}
+				onClose={addCourseDisclosure.onClose}
+			>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Add Course</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<CreateNewCourse
+							universityData={schoolData}
+							modalDisclosure={addCourseDisclosure}
+						/>
+					</ModalBody>
+				</ModalContent>
+			</Modal>
+		</>
+	);
 }
