@@ -27,9 +27,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 	if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-let url = "https://ednotes-api.herokuapp.com/graphql";
+let url = "http://localhost:7000/graphql";
 
-//"http://localhost:7000/graphql";
+// "https://ednotes-api.herokuapp.com/graphql";
 
 const uploadLink = createUploadLink({ uri: url });
 
