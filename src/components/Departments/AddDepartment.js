@@ -104,7 +104,7 @@ const AddDepartment = ({ modalDisclosure, universityData }) => {
 						faculty: facultyId,
 					};
 
-					if (coursePrice) input.pay_per_semester = coursePrice;
+					if (coursePrice) input.pay_per_semester = Number(coursePrice);
 
 					addDepartmentHandler({
 						variables: {
