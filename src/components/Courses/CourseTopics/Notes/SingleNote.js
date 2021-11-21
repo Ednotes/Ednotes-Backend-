@@ -46,8 +46,9 @@ const SingleNote = ({ data }) => {
 				});
 			},
 			onError(error) {
+				// error.graphQLErrors[0]["message"]["message"]
 				toast({
-					description: error.graphQLErrors[0]["message"]["message"],
+					description: error.message,
 					status: "error",
 					duration: 9000,
 					isClosable: true,
