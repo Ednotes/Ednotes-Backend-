@@ -27,8 +27,6 @@ const Notes = ({ courseId }) => {
 		});
 	};
 
-	console.log("loading", loading, "data", data, "topicID", topicId);
-
 	return (
 		<Box>
 			{loading && <Loader />}

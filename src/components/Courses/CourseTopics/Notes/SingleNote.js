@@ -54,14 +54,6 @@ const SingleNote = ({ data }) => {
 					isClosable: true,
 					position: "top-right",
 				});
-
-				// console.log(
-				// 	"new err",
-				// 	error,
-				// 	JSON.stringify(error),
-				// 	"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
-				// 	error.graphQLErrors[0]["message"]["message"]
-				// );
 			},
 			refetchQueries: [{ query: GET_NOTES, variables: { id: topicId } }],
 		}
