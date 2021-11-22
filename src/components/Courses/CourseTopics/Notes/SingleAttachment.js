@@ -14,7 +14,6 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 const SingleAttachment = ({ data }) => {
-	// console.log("data here", data);
 	const splitNote = (text) => {
 		if (text.length > 20) {
 			return text.slice(0, 20);
@@ -22,7 +21,6 @@ const SingleAttachment = ({ data }) => {
 
 		return text;
 	};
-	console.log("data attach", data);
 
 	return (
 		<Center

@@ -42,7 +42,6 @@ export default function Courses() {
 		},
 	});
 	const { data, loading } = useQuery(GET_COURSES);
-	console.log("school data", sData, "courses", data);
 
 	const schoolData = sData?.school;
 	const allCourses = data?.get_all_courses?.edges;
